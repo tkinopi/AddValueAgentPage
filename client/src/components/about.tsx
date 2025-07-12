@@ -8,29 +8,29 @@ export default function About() {
 
   const values = [
     {
-      icon: "fas fa-lightbulb",
-      title: "革新",
-      description: "最新技術を活用した革新的なソリューション"
-    },
-    {
-      icon: "fas fa-heart",
+      icon: "fas fa-handshake",
       title: "信頼",
-      description: "長年の実績と豊富な経験による信頼性"
+      description: "一人ひとりに寄り添うパートナーシップ"
     },
     {
-      icon: "fas fa-rocket",
-      title: "成長",
-      description: "お客様と共に成長し続けるパートナーシップ"
+      icon: "fas fa-trophy",
+      title: "価値創造",
+      description: "採用を通じて企業の価値向上を実現"
+    },
+    {
+      icon: "fas fa-users",
+      title: "人材育成",
+      description: "個人の成長と企業の発展を両立"
     }
   ];
 
   return (
     <section id="about" ref={ref} className="py-20 relative overflow-hidden">
-      {/* Professional Japanese team in a modern conference room */}
+      {/* Professional Japanese team collaboration and networking */}
       <div 
         className="absolute inset-0 parallax-bg"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
+          backgroundImage: "url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
         }}
       >
         <div className="absolute inset-0 bg-japanese-primary/85"></div>
@@ -52,8 +52,8 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl leading-relaxed mb-12 opacity-90"
           >
-            私たちは、人を中心とした革新的なソリューションを提供する専門企業です。<br />
-            テクノロジーの力で、お客様の課題解決と成長をサポートします。
+            株式会社アドバリューエージェントは、人材と企業をつなぐ架け橋として、<br />
+            採用を通じて真の価値創造を実現する専門企業です。
           </motion.p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">

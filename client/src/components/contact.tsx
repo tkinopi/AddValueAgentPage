@@ -69,7 +69,7 @@ export default function Contact() {
     {
       icon: "fas fa-map-marker-alt",
       title: "所在地",
-      content: "〒100-0001\n東京都千代田区千代田1-1-1\n千代田ビル10階"
+      content: "〒100-0001\n東京都千代田区千代田1-1-1\nアドバリュービル5階"
     },
     {
       icon: "fas fa-phone",
@@ -79,7 +79,7 @@ export default function Contact() {
     {
       icon: "fas fa-envelope",
       title: "メールアドレス",
-      content: "info@human.or.jp"
+      content: "info@addvalue-agent.co.jp"
     },
     {
       icon: "fas fa-clock",

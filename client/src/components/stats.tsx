@@ -51,8 +51,8 @@ export default function Stats() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-center"
           >
-            <Counter target={1000} />
-            <p className="text-japanese-secondary font-medium">プロジェクト実績</p>
+            <Counter target={800} />
+            <p className="text-japanese-secondary font-medium">転職成功実績</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -60,8 +60,8 @@ export default function Stats() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center"
           >
-            <Counter target={500} />
-            <p className="text-japanese-secondary font-medium">クライアント数</p>
+            <Counter target={300} />
+            <p className="text-japanese-secondary font-medium">採用支援企業数</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -69,8 +69,8 @@ export default function Stats() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-center"
           >
-            <Counter target={15} />
-            <p className="text-japanese-secondary font-medium">年間の実績</p>
+            <Counter target={120} />
+            <p className="text-japanese-secondary font-medium">SESエンジニア数</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -78,8 +78,8 @@ export default function Stats() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-center"
           >
-            <Counter target={99} />
-            <p className="text-japanese-secondary font-medium">満足度（%）</p>
+            <Counter target={95} />
+            <p className="text-japanese-secondary font-medium">顧客満足度（%）</p>
           </motion.div>
         </div>
       </div>

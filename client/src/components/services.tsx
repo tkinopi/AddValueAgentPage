@@ -8,22 +8,34 @@ export default function Services() {
 
   const services = [
     {
-      icon: "fas fa-code",
-      title: "システム開発",
-      description: "最新のテクノロジーを活用した高品質なシステム開発サービスを提供します。",
-      features: ["Webアプリケーション", "モバイルアプリ", "業務システム"]
+      icon: "fas fa-user-tie",
+      title: "人材紹介事業",
+      description: "若年層向けキャリア支援と医療福祉領域の専門的な転職支援を提供します。",
+      features: ["若年層キャリア支援", "医療福祉分野", "転職コンサルティング"]
     },
     {
       icon: "fas fa-chart-line",
-      title: "コンサルティング",
-      description: "豊富な経験と専門知識を活かしたコンサルティングサービスを提供します。",
-      features: ["DX推進支援", "業務改善", "戦略策定"]
+      title: "採用コンサルティング事業",
+      description: "効果的な母集団形成と採用単価の削減を実現します。",
+      features: ["母集団形成", "採用単価削減", "採用戦略策定"]
     },
     {
-      icon: "fas fa-shield-alt",
-      title: "サポート",
-      description: "導入後も安心してご利用いただけるよう、包括的なサポートを提供します。",
-      features: ["24時間監視", "メンテナンス", "技術支援"]
+      icon: "fas fa-laptop-code",
+      title: "SES事業",
+      description: "未経験者のキャリア設計から経験者のキャリアアップまでサポートします。",
+      features: ["未経験者育成", "キャリア設計", "待遇改善"]
+    },
+    {
+      icon: "fas fa-globe",
+      title: "webコンサルティング事業",
+      description: "デジタル戦略から実装まで、Webを活用した企業の成長を支援します。",
+      features: ["デジタル戦略", "Web制作", "マーケティング"]
+    },
+    {
+      icon: "fas fa-graduation-cap",
+      title: "教育支援",
+      description: "人材育成と教育プログラムで組織の成長を促進します。",
+      features: ["人材育成", "研修プログラム", "スキルアップ"]
     }
   ];
 
@@ -37,7 +49,7 @@ export default function Services() {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-5xl font-bold text-japanese-dark mb-4"
           >
-            サービス
+            事業内容
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -45,11 +57,11 @@ export default function Services() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-japanese-secondary max-w-2xl mx-auto"
           >
-            お客様のニーズに合わせた最適なソリューションを提供します
+            採用で価値を創る、多角的な事業展開で企業の成長をサポート
           </motion.p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}

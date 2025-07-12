@@ -10,11 +10,11 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Modern Japanese corporate headquarters building with glass facade */}
+      {/* Professional business meeting and handshake representing recruitment and partnerships */}
       <div 
         className="absolute inset-0 parallax-bg"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
+          backgroundImage: "url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
         }}
       >
         <div className="absolute inset-0 bg-japanese-primary/70"></div>
@@ -27,12 +27,12 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="block">プロフェッショナル</span>
-            <span className="block text-japanese-accent">ソリューション</span>
+            <span className="block">ADD VALUE AGENT</span>
+            <span className="block text-japanese-accent">採用で価値を創る</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-            革新的なテクノロジーで企業の成長をサポートします。<br />
-            人を中心としたソリューションを提供します。
+            人材紹介から採用コンサルティングまで、<br />
+            企業の成長に必要な人的資源を提供します。
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button
@@ -41,8 +41,8 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="bg-japanese-accent hover:bg-japanese-accent/90 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300"
             >
-              <i className="fas fa-rocket mr-2"></i>
-              サービス詳細
+              <i className="fas fa-briefcase mr-2"></i>
+              事業内容
             </motion.button>
             <motion.button
               onClick={() => scrollToSection("contact")}

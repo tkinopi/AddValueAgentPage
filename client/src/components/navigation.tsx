@@ -23,9 +23,9 @@ export default function Navigation() {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-japanese-primary rounded-lg flex items-center justify-center">
-                <i className="fas fa-users text-white text-xl"></i>
+                <i className="fas fa-handshake text-white text-xl"></i>
               </div>
-              <span className="text-2xl font-bold text-japanese-primary">Human</span>
+              <span className="text-2xl font-bold text-japanese-primary">ADD VALUE AGENT</span>
             </div>
             
             <div className="hidden md:flex space-x-8">
@@ -33,13 +33,10 @@ export default function Navigation() {
                 ホーム
               </button>
               <button onClick={() => scrollToSection("services")} className="nav-link text-japanese-dark hover:text-japanese-primary font-medium">
-                サービス
+                事業内容
               </button>
               <button onClick={() => scrollToSection("about")} className="nav-link text-japanese-dark hover:text-japanese-primary font-medium">
                 会社概要
-              </button>
-              <button onClick={() => scrollToSection("projects")} className="nav-link text-japanese-dark hover:text-japanese-primary font-medium">
-                実績
               </button>
               <button onClick={() => scrollToSection("contact")} className="nav-link text-japanese-dark hover:text-japanese-primary font-medium">
                 お問い合わせ
@@ -65,7 +62,7 @@ export default function Navigation() {
           >
             <div className="p-4">
               <div className="flex justify-between items-center mb-8">
-                <span className="text-2xl font-bold text-japanese-primary">Human</span>
+                <span className="text-2xl font-bold text-japanese-primary">ADD VALUE AGENT</span>
                 <button onClick={toggleMobileMenu} className="text-japanese-dark">
                   <i className="fas fa-times text-xl"></i>
                 </button>
@@ -75,13 +72,10 @@ export default function Navigation() {
                   ホーム
                 </button>
                 <button onClick={() => scrollToSection("services")} className="block text-japanese-dark hover:text-japanese-primary font-medium text-lg">
-                  サービス
+                  事業内容
                 </button>
                 <button onClick={() => scrollToSection("about")} className="block text-japanese-dark hover:text-japanese-primary font-medium text-lg">
                   会社概要
-                </button>
-                <button onClick={() => scrollToSection("projects")} className="block text-japanese-dark hover:text-japanese-primary font-medium text-lg">
-                  実績
                 </button>
                 <button onClick={() => scrollToSection("contact")} className="block text-japanese-dark hover:text-japanese-primary font-medium text-lg">
                   お問い合わせ

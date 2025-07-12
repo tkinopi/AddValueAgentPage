@@ -6,13 +6,13 @@ export default function Footer() {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-japanese-primary rounded-lg flex items-center justify-center">
-                <i className="fas fa-users text-white"></i>
+                <i className="fas fa-handshake text-white"></i>
               </div>
-              <span className="text-xl font-bold">Human</span>
+              <span className="text-xl font-bold">ADD VALUE AGENT</span>
             </div>
             <p className="text-gray-400 mb-4">
-              人を中心としたソリューションで、<br />
-              お客様の成功をサポートします。
+              採用で価値を創る、<br />
+              人材と企業をつなぐ架け橋。
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -28,12 +28,13 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="font-bold mb-4">サービス</h3>
+            <h3 className="font-bold mb-4">事業内容</h3>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">システム開発</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">コンサルティング</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">サポート</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">保守・運用</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">人材紹介事業</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">採用コンサルティング</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">SES事業</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">webコンサルティング</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">教育支援</a></li>
             </ul>
           </div>
           
@@ -53,13 +54,13 @@ export default function Footer() {
               <li>〒100-0001</li>
               <li>東京都千代田区千代田1-1-1</li>
               <li>TEL: 03-1234-5678</li>
-              <li>EMAIL: info@human.or.jp</li>
+              <li>EMAIL: info@addvalue-agent.co.jp</li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 Human. All rights reserved.</p>
+          <p>&copy; 2024 株式会社アドバリューエージェント. All rights reserved.</p>
         </div>
       </div>
     </footer>

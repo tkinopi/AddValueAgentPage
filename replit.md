@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack web application built as a Japanese corporate website. The project uses a modern tech stack with React for the frontend, Express.js for the backend, and includes a comprehensive UI component library. The application is designed to be a professional corporate website with Japanese language support and modern design principles.
+This is a full-stack web application built as a Japanese corporate website for 株式会社アドバリューエージェント (ADD VALUE AGENT). The project uses a modern tech stack with React for the frontend, Express.js for the backend, and includes a comprehensive UI component library. The application is designed to be a professional recruitment and HR services website with Japanese language support and modern design principles focused on human resources and talent acquisition.
 
 ## User Preferences
 
@@ -37,13 +37,13 @@ Preferred communication style: Simple, everyday language.
 ## Key Components
 
 ### Frontend Components
-- **Navigation**: Fixed header with smooth scrolling navigation
-- **Hero Section**: Professional landing area with call-to-action buttons
-- **Services**: Three-column service showcase
-- **About**: Company information with animated counters
-- **Projects**: Image gallery with lightbox functionality
+- **Navigation**: Fixed header with smooth scrolling navigation for ADD VALUE AGENT
+- **Hero Section**: Professional landing area emphasizing recruitment and talent acquisition
+- **Statistics**: Animated counters showing recruitment success metrics
+- **Services**: Five-column service showcase covering all business areas
+- **About**: Company information with core values focused on human resources
 - **Contact**: Form with validation and toast notifications
-- **Footer**: Corporate footer with links and social media
+- **Footer**: Corporate footer with updated company information and services
 
 ### Backend Components
 - **Contact API**: Form submission endpoint with validation
