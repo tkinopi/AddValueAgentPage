@@ -33,7 +33,7 @@ export default function About() {
           backgroundImage: "url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
         }}
       >
-        <div className="absolute inset-0 bg-japanese-primary/85"></div>
+        <div className="absolute inset-0 bg-black/70"></div>
       </div>
       
       <div className="relative z-10 container mx-auto px-4">
@@ -42,7 +42,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold mb-8"
+            className="text-4xl md:text-5xl font-bold mb-8 text-shadow-lg"
           >
             会社概要
           </motion.h2>
@@ -50,7 +50,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl leading-relaxed mb-12 opacity-90"
+            className="text-xl md:text-2xl leading-relaxed mb-12 opacity-90 text-shadow"
           >
             株式会社アドバリューエージェントは、人材と企業をつなぐ架け橋として、<br />
             採用を通じて真の価値創造を実現する専門企業です。
@@ -66,8 +66,8 @@ export default function About() {
                 className="glass-effect rounded-xl p-6"
               >
                 <i className={`${value.icon} text-japanese-accent text-4xl mb-4`}></i>
-                <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                <p className="opacity-90">{value.description}</p>
+                <h3 className="text-xl font-bold mb-2 text-shadow">{value.title}</h3>
+                <p className="opacity-90 text-shadow">{value.description}</p>
               </motion.div>
             ))}
           </div>
