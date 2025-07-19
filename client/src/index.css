@@ -27,7 +27,7 @@
   /* Custom Japanese corporate colors */
   --japanese-primary: hsl(225, 86%, 41%);
   --japanese-secondary: hsl(215, 25%, 52%);
-  --japanese-accent: hsl(348, 83%, 47%);
+  --japanese-accent: hsl(217, 91%, 60%);
   --japanese-light: hsl(210, 20%, 98%);
   --japanese-dark: hsl(210, 11%, 15%);
 }
@@ -110,7 +110,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: hsl(348, 83%, 47%);
+    background: hsl(217, 91%, 60%);
     transition: width 0.3s ease;
   }
   
