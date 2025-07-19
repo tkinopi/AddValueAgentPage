@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import CompanyLogo from "./CompanyLogo";
 
 export default function Footer() {
@@ -30,20 +31,20 @@ export default function Footer() {
           <div>
             <h3 className="font-bold mb-4">事業内容</h3>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">人材紹介事業</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">採用コンサルティング</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">SES事業</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">webコンサルティング</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">教育支援</a></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">人材紹介事業</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">採用コンサルティング</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">SES事業</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">webコンサルティング</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">教育支援</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-bold mb-4">会社情報</h3>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">会社概要</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">沿革</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">採用情報</a></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">会社概要</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">沿革</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors">採用情報</Link></li>
               <li><a href="#" className="hover:text-white transition-colors">ニュース</a></li>
             </ul>
           </div>

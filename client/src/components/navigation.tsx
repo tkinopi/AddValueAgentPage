@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "wouter";
 import CompanyLogo from "./CompanyLogo";
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location] = useLocation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -17,29 +23,33 @@ export default function Navigation() {
     setIsMobileMenuOpen(false);
   };
 
+  const isActivePage = (path: string) => {
+    return location === path;
+  };
+
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3">
               <CompanyLogo size="lg" className="text-japanese-primary" />
               <span className="text-2xl font-bold text-japanese-primary">ADD VALUE AGENT</span>
-            </div>
+            </Link>
             
             <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection("home")} className="nav-link text-japanese-dark hover:text-japanese-primary font-medium">
+              <Link href="/" className={`nav-link font-medium transition-colors ${isActivePage("/") ? "text-japanese-primary" : "text-japanese-dark hover:text-japanese-primary"}`}>
                 ホーム
-              </button>
-              <button onClick={() => scrollToSection("services")} className="nav-link text-japanese-dark hover:text-japanese-primary font-medium">
+              </Link>
+              <Link href="/services" className={`nav-link font-medium transition-colors ${isActivePage("/services") ? "text-japanese-primary" : "text-japanese-dark hover:text-japanese-primary"}`}>
                 事業内容
-              </button>
-              <button onClick={() => scrollToSection("about")} className="nav-link text-japanese-dark hover:text-japanese-primary font-medium">
+              </Link>
+              <Link href="/about" className={`nav-link font-medium transition-colors ${isActivePage("/about") ? "text-japanese-primary" : "text-japanese-dark hover:text-japanese-primary"}`}>
                 会社概要
-              </button>
-              <button onClick={() => scrollToSection("contact")} className="nav-link text-japanese-dark hover:text-japanese-primary font-medium">
+              </Link>
+              <Link href="/contact" className={`nav-link font-medium transition-colors ${isActivePage("/contact") ? "text-japanese-primary" : "text-japanese-dark hover:text-japanese-primary"}`}>
                 お問い合わせ
-              </button>
+              </Link>
             </div>
             
             <button className="md:hidden text-japanese-dark" onClick={toggleMobileMenu}>
@@ -61,27 +71,27 @@ export default function Navigation() {
           >
             <div className="p-4">
               <div className="flex justify-between items-center mb-8">
-                <div className="flex items-center space-x-3">
+                <Link href="/" onClick={closeMobileMenu} className="flex items-center space-x-3">
                   <CompanyLogo size="md" className="text-japanese-primary" />
                   <span className="text-xl font-bold text-japanese-primary">ADD VALUE AGENT</span>
-                </div>
+                </Link>
                 <button onClick={toggleMobileMenu} className="text-japanese-dark">
                   <i className="fas fa-times text-xl"></i>
                 </button>
               </div>
               <div className="space-y-6">
-                <button onClick={() => scrollToSection("home")} className="block text-japanese-dark hover:text-japanese-primary font-medium text-lg">
+                <Link href="/" onClick={closeMobileMenu} className={`block font-medium text-lg transition-colors ${isActivePage("/") ? "text-japanese-primary" : "text-japanese-dark hover:text-japanese-primary"}`}>
                   ホーム
-                </button>
-                <button onClick={() => scrollToSection("services")} className="block text-japanese-dark hover:text-japanese-primary font-medium text-lg">
+                </Link>
+                <Link href="/services" onClick={closeMobileMenu} className={`block font-medium text-lg transition-colors ${isActivePage("/services") ? "text-japanese-primary" : "text-japanese-dark hover:text-japanese-primary"}`}>
                   事業内容
-                </button>
-                <button onClick={() => scrollToSection("about")} className="block text-japanese-dark hover:text-japanese-primary font-medium text-lg">
+                </Link>
+                <Link href="/about" onClick={closeMobileMenu} className={`block font-medium text-lg transition-colors ${isActivePage("/about") ? "text-japanese-primary" : "text-japanese-dark hover:text-japanese-primary"}`}>
                   会社概要
-                </button>
-                <button onClick={() => scrollToSection("contact")} className="block text-japanese-dark hover:text-japanese-primary font-medium text-lg">
+                </Link>
+                <Link href="/contact" onClick={closeMobileMenu} className={`block font-medium text-lg transition-colors ${isActivePage("/contact") ? "text-japanese-primary" : "text-japanese-dark hover:text-japanese-primary"}`}>
                   お問い合わせ
-                </button>
+                </Link>
               </div>
             </div>
           </motion.div>
