@@ -9,7 +9,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
       {/* Professional business meeting and handshake representing recruitment and partnerships */}
       <div 
         className="absolute inset-0 parallax-bg bg-gray-600"
@@ -21,13 +21,13 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/40 md:bg-black/60"></div>
       </div>
       
-      <div className="relative z-10 text-center text-white px-4">
+      <div className="relative z-10 text-center text-white px-4 mt-8 md:mt-0">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-shadow-lg">
+          <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight text-shadow-lg">
             <span className="block">ADD VALUE AGENT</span>
             <span className="block text-japanese-accent">採用で価値を創る</span>
           </h1>
