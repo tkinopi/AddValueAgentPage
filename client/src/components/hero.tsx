@@ -12,12 +12,13 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Professional business meeting and handshake representing recruitment and partnerships */}
       <div 
-        className="absolute inset-0 parallax-bg"
+        className="absolute inset-0 parallax-bg bg-gray-600"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
+          backgroundImage: "url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')",
+          minHeight: "100vh"
         }}
       >
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-black/40 md:bg-black/60"></div>
       </div>
       
       <div className="relative z-10 text-center text-white px-4">

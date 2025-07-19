@@ -104,6 +104,12 @@ Preferred communication style: Simple, everyday language.
 - Custom CSS variables for Japanese corporate color scheme
 - Professional Japanese corporate aesthetic with modern design principles
 
+### Mobile Optimization
+- Responsive parallax effects (disabled on mobile, enabled on desktop)
+- Lighter overlay opacity on mobile devices for better image visibility
+- Fallback background colors for improved loading experience
+- Text shadows for enhanced readability on background images
+
 ### Performance Optimizations
 - React Query for efficient data fetching and caching
 - Framer Motion for hardware-accelerated animations

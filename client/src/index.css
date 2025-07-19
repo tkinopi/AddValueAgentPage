@@ -72,10 +72,16 @@
 
 @layer utilities {
   .parallax-bg {
-    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+  
+  /* Enable parallax only on larger screens where it works well */
+  @media (min-width: 768px) {
+    .parallax-bg {
+      background-attachment: fixed;
+    }
   }
   
   .glass-effect {

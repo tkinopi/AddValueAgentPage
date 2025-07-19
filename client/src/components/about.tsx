@@ -28,12 +28,12 @@ export default function About() {
     <section id="about" ref={ref} className="py-20 relative overflow-hidden">
       {/* Professional Japanese team collaboration and networking */}
       <div 
-        className="absolute inset-0 parallax-bg"
+        className="absolute inset-0 parallax-bg bg-gray-600"
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
         }}
       >
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-black/50 md:bg-black/70"></div>
       </div>
       
       <div className="relative z-10 container mx-auto px-4">
