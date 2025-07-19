@@ -4,10 +4,12 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-japanese-primary rounded-lg flex items-center justify-center">
-                <i className="fas fa-handshake text-white"></i>
-              </div>
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src="@assets/会社ロゴ　復元_1752920491687.png" 
+                alt="Add Value Agent Logo" 
+                className="h-8 w-auto filter brightness-0 invert"
+              />
               <span className="text-xl font-bold">ADD VALUE AGENT</span>
             </div>
             <p className="text-gray-400 mb-4">

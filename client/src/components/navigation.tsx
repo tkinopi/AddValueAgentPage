@@ -21,10 +21,12 @@ export default function Navigation() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-japanese-primary rounded-lg flex items-center justify-center">
-                <i className="fas fa-handshake text-white text-xl"></i>
-              </div>
+            <div className="flex items-center space-x-3">
+              <img 
+                src="@assets/会社ロゴ　復元_1752920491687.png" 
+                alt="Add Value Agent Logo" 
+                className="h-10 w-auto"
+              />
               <span className="text-2xl font-bold text-japanese-primary">ADD VALUE AGENT</span>
             </div>
             
@@ -62,7 +64,14 @@ export default function Navigation() {
           >
             <div className="p-4">
               <div className="flex justify-between items-center mb-8">
-                <span className="text-2xl font-bold text-japanese-primary">ADD VALUE AGENT</span>
+                <div className="flex items-center space-x-3">
+                  <img 
+                    src="@assets/会社ロゴ　復元_1752920491687.png" 
+                    alt="Add Value Agent Logo" 
+                    className="h-8 w-auto"
+                  />
+                  <span className="text-xl font-bold text-japanese-primary">ADD VALUE AGENT</span>
+                </div>
                 <button onClick={toggleMobileMenu} className="text-japanese-dark">
                   <i className="fas fa-times text-xl"></i>
                 </button>
