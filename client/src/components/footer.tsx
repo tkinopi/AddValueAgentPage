@@ -1,3 +1,5 @@
+import CompanyLogo from "./CompanyLogo";
+
 export default function Footer() {
   return (
     <footer className="bg-japanese-dark text-white py-12">
@@ -5,11 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="@assets/会社ロゴ　復元_1752920491687.png" 
-                alt="Add Value Agent Logo" 
-                className="h-8 w-auto filter brightness-0 invert"
-              />
+              <CompanyLogo size="md" className="text-white" />
               <span className="text-xl font-bold">ADD VALUE AGENT</span>
             </div>
             <p className="text-gray-400 mb-4">

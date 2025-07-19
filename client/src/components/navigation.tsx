@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import CompanyLogo from "./CompanyLogo";
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,11 +23,7 @@ export default function Navigation() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
-              <img 
-                src="@assets/会社ロゴ　復元_1752920491687.png" 
-                alt="Add Value Agent Logo" 
-                className="h-10 w-auto"
-              />
+              <CompanyLogo size="lg" className="text-japanese-primary" />
               <span className="text-2xl font-bold text-japanese-primary">ADD VALUE AGENT</span>
             </div>
             
@@ -65,11 +62,7 @@ export default function Navigation() {
             <div className="p-4">
               <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center space-x-3">
-                  <img 
-                    src="@assets/会社ロゴ　復元_1752920491687.png" 
-                    alt="Add Value Agent Logo" 
-                    className="h-8 w-auto"
-                  />
+                  <CompanyLogo size="md" className="text-japanese-primary" />
                   <span className="text-xl font-bold text-japanese-primary">ADD VALUE AGENT</span>
                 </div>
                 <button onClick={toggleMobileMenu} className="text-japanese-dark">
