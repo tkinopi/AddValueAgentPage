@@ -21,9 +21,4 @@
       "dest": "/index.html"
     }
   ],
-  "env": {
-    "GMAIL_USER": "@gmail_user",
-    "GMAIL_APP_PASSWORD": "@gmail_app_password", 
-    "CONTACT_EMAIL": "@contact_email"
-  }
 }
