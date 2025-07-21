@@ -193,7 +193,7 @@ export default function ServicesPage() {
                     <Button 
                       className={`${service.bgColor} hover:opacity-90 text-white px-6 py-2 rounded-full`}
                     >
-                      詳しく見る
+                      <Link href={`/services/${service.title.toLowerCase().replace('add value ', '')}`}>詳しく見る</Link>
                     </Button>
                     <Button 
                       variant="outline" 
