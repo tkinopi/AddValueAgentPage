@@ -31,11 +31,11 @@ export default function Footer() {
           <div>
             <h3 className="font-bold mb-4">事業内容</h3>
             <ul className="space-y-2 text-gray-400">
-              <li><Link href="/services" className="hover:text-white transition-colors">人材紹介事業</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">採用コンサルティング</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">SES事業</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">webコンサルティング</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">教育支援</Link></li>
+              <li><Link href="/services/recruit" className="hover:text-white transition-colors">人材紹介事業</Link></li>
+              <li><Link href="/services/consulting" className="hover:text-white transition-colors">採用コンサルティング</Link></li>
+              <li><Link href="/services/ses" className="hover:text-white transition-colors">SES事業</Link></li>
+              <li><Link href="/services/web" className="hover:text-white transition-colors">webコンサルティング</Link></li>
+              <li><Link href="/services/education" className="hover:text-white transition-colors">教育支援</Link></li>
             </ul>
           </div>
           
@@ -43,9 +43,6 @@ export default function Footer() {
             <h3 className="font-bold mb-4">会社情報</h3>
             <ul className="space-y-2 text-gray-400">
               <li><Link href="/about" className="hover:text-white transition-colors">会社概要</Link></li>
-              <li><Link href="/about" className="hover:text-white transition-colors">沿革</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">採用情報</Link></li>
-              <li><a href="#" className="hover:text-white transition-colors">ニュース</a></li>
             </ul>
           </div>
           
