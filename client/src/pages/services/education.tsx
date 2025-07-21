@@ -436,7 +436,7 @@ export default function EducationPage() {
                 <Button size="lg" className="bg-white text-orange-500 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold">
                   <Link href="/contact">お問い合わせ</Link>
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-orange-500 px-8 py-3 rounded-full font-semibold">
+                <Button size="lg" variant="outline" className="border-white text-orange-500 hover:bg-white hover:text-orange-500 px-8 py-3 rounded-full font-semibold">
                   <Link href="/services">サービス一覧</Link>
                 </Button>
               </div>
