@@ -34,8 +34,8 @@ export default function AboutPage() {
                   <div className="md:col-span-2">
                     <h3 className="font-semibold text-japanese-dark mb-2">所在地</h3>
                     <p className="text-gray-700 mb-4">
-                      〒100-0001<br />
-                      東京都千代田区千代田1-1-1<br />
+                      〒651-2112<br />
+                      兵庫県神戸市西区大津和2丁目8番2号<br />
                       千代田ビル10F
                     </p>
                   </div>
@@ -106,27 +106,6 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* アクセス */}
-              <div className="bg-white rounded-lg shadow-lg p-8">
-                <h2 className="text-2xl font-bold text-japanese-dark mb-6">アクセス</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h3 className="font-semibold text-japanese-dark mb-2">最寄り駅</h3>
-                    <ul className="text-gray-700 space-y-1">
-                      <li>• JR東京駅より徒歩5分</li>
-                      <li>• 地下鉄大手町駅より徒歩3分</li>
-                      <li>• 地下鉄二重橋前駅より徒歩7分</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-japanese-dark mb-2">お車でお越しの場合</h3>
-                    <p className="text-gray-700">
-                      近隣に有料駐車場がございます。<br />
-                      事前にお電話でご相談ください。
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

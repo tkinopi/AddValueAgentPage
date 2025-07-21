@@ -17,11 +17,63 @@ export default function ContactPage() {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert("お問い合わせありがとうございます。内容を確認の上、担当者よりご連絡させていただきます。");
+    
+    // 基本的なクライアントサイドバリデーション
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim() || !formData.inquiry_type) {
+      alert("必須項目を入力してください。");
+      return;
+    }
+
+    try {
+      console.log("Submitting form data:", formData);
+      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log("Response status:", response.status);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("HTTP Error:", response.status, errorText);
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("Response data:", result);
+
+      if (result.success) {
+        alert(result.message);
+        // フォームをリセット
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          inquiry_type: "",
+          message: ""
+        });
+      } else {
+        alert(result.message || "送信中にエラーが発生しました。");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      
+      // より詳細なエラーメッセージ
+      if (error instanceof TypeError && error.message.includes("fetch")) {
+        alert("サーバーに接続できませんでした。開発サーバーが起動しているか確認してください。");
+      } else if (error instanceof Error && error.message.includes("HTTP Error")) {
+        alert("サーバーエラーが発生しました。しばらく時間をおいてから再度お試しください。");
+      } else {
+        alert("送信中にエラーが発生しました。もう一度お試しください。");
+      }
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -135,8 +187,8 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-japanese-dark mb-1">所在地</h3>
                       <p className="text-gray-700">
-                        〒100-0001<br />
-                        東京都千代田区千代田1-1-1<br />
+                        〒651-2112<br />
+                        兵庫県神戸市西区大津和2丁目8番2号<br />
                         千代田ビル10F
                       </p>
                     </div>

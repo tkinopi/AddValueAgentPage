@@ -1,0 +1,22 @@
+{
+  "name": "ADD VALUE AGENT - アドバリューエージェント",
+  "short_name": "AddValueAgent",
+  "description": "人材紹介・採用コンサルティング・SES事業・webコンサルティング・教育支援を提供する総合人材サービス企業",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1a365d",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}

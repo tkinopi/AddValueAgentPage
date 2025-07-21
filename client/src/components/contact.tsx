@@ -69,7 +69,7 @@ export default function Contact() {
     {
       icon: "fas fa-map-marker-alt",
       title: "所在地",
-      content: "〒100-0001\n東京都千代田区千代田1-1-1\nアドバリュービル5階"
+      content: "〒651-2112\n兵庫県神戸市西区大津和2丁目8番2号"
     },
     {
       icon: "fas fa-phone",

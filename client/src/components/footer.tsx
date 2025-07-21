@@ -49,8 +49,8 @@ export default function Footer() {
           <div>
             <h3 className="font-bold mb-4">お問い合わせ</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>〒100-0001</li>
-              <li>東京都千代田区千代田1-1-1</li>
+              <li>〒651-2112</li>
+              <li>兵庫県神戸市西区大津和2丁目8番2号</li>
               <li>TEL: 03-1234-5678</li>
               <li>EMAIL: info@addvalue-agent.co.jp</li>
             </ul>
