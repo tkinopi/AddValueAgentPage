@@ -1,4 +1,4 @@
-import { ContactInquiry } from '../entities/ContactInquiry';
+import { ContactInquiry } from '../entities/ContactInquiry.js';
 
 export interface EmailNotificationData {
   to: string;

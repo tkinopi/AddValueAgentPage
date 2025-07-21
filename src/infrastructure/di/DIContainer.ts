@@ -1,9 +1,9 @@
-import { IContactRepository } from '../../domain/repositories/IContactRepository';
-import { IEmailService } from '../../domain/services/IEmailService';
-import { SubmitContactInquiryUseCase } from '../../application/usecases/SubmitContactInquiryUseCase';
-import { ContactController } from '../../presentation/controllers/ContactController';
-import { InMemoryContactRepository } from '../persistence/InMemoryContactRepository';
-import { GmailEmailService } from '../email/GmailEmailService';
+import { IContactRepository } from '../../domain/repositories/IContactRepository.js';
+import { IEmailService } from '../../domain/services/IEmailService.js';
+import { SubmitContactInquiryUseCase } from '../../application/usecases/SubmitContactInquiryUseCase.js';
+import { ContactController } from '../../presentation/controllers/ContactController.js';
+import { InMemoryContactRepository } from '../persistence/InMemoryContactRepository.js';
+import { GmailEmailService } from '../email/GmailEmailService.js';
 
 export class DIContainer {
   private static instance: DIContainer;

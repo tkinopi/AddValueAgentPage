@@ -1,7 +1,7 @@
-import { ContactInquiryEntity } from '../../domain/entities/ContactInquiry';
-import { IContactRepository } from '../../domain/repositories/IContactRepository';
-import { IEmailService } from '../../domain/services/IEmailService';
-import { ContactRequestDto, ContactResponseDto, ContactRequestDtoMapper } from '../dto/ContactRequestDto';
+import { ContactInquiryEntity } from '../../domain/entities/ContactInquiry.js';
+import { IContactRepository } from '../../domain/repositories/IContactRepository.js';
+import { IEmailService } from '../../domain/services/IEmailService.js';
+import { ContactRequestDto, ContactResponseDto, ContactRequestDtoMapper } from '../dto/ContactRequestDto.js';
 
 export class SubmitContactInquiryUseCase {
   constructor(

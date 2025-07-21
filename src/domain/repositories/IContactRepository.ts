@@ -1,4 +1,4 @@
-import { ContactInquiry } from '../entities/ContactInquiry';
+import { ContactInquiry } from '../entities/ContactInquiry.js';
 
 export interface IContactRepository {
   save(inquiry: ContactInquiry): Promise<ContactInquiry>;

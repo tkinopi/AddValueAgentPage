@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build && tsc --project tsconfig.server.json",
   "outputDirectory": "client/dist",
   "installCommand": "npm install",
   "functions": {

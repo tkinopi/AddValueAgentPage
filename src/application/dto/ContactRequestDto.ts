@@ -1,4 +1,4 @@
-import { InquiryType } from '../../domain/entities/ContactInquiry';
+import { InquiryType } from '../../domain/entities/ContactInquiry.js';
 
 export interface ContactRequestDto {
   name: string;

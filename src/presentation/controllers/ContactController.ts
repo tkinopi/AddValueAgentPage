@@ -1,5 +1,5 @@
-import { SubmitContactInquiryUseCase } from '../../application/usecases/SubmitContactInquiryUseCase';
-import { ContactRequestDto } from '../../application/dto/ContactRequestDto';
+import { SubmitContactInquiryUseCase } from '../../application/usecases/SubmitContactInquiryUseCase.js';
+import { ContactRequestDto } from '../../application/dto/ContactRequestDto.js';
 
 interface RequestLike {
   method?: string;

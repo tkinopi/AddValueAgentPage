@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { DIContainer } from '../src/infrastructure/di/DIContainer';
+import { DIContainer } from '../src/infrastructure/di/DIContainer.js';
 
 // DIコンテナから依存関係を取得
 const diContainer = DIContainer.getInstance();
@@ -38,7 +38,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     };
 
     await contactController.handleContactSubmission(
-      { ...mockReq, body: req.body } as any,
+      mockReq as any,
       mockResponseHandler as any
     );
 

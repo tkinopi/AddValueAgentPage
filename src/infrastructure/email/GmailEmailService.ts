@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
-import { ContactInquiry, InquiryType } from '../../domain/entities/ContactInquiry';
-import { IEmailService } from '../../domain/services/IEmailService';
+import { ContactInquiry, InquiryType } from '../../domain/entities/ContactInquiry.js';
+import { IEmailService } from '../../domain/services/IEmailService.js';
 
 export class GmailEmailService implements IEmailService {
   private transporter: nodemailer.Transporter;

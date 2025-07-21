@@ -1,5 +1,5 @@
-import { ContactInquiry } from '../../domain/entities/ContactInquiry';
-import { IContactRepository } from '../../domain/repositories/IContactRepository';
+import { ContactInquiry } from '../../domain/entities/ContactInquiry.js';
+import { IContactRepository } from '../../domain/repositories/IContactRepository.js';
 import { nanoid } from 'nanoid';
 
 export class InMemoryContactRepository implements IContactRepository {
