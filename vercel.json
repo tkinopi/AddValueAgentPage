@@ -4,21 +4,14 @@
   "outputDirectory": "client/dist",
   "installCommand": "npm install",
   "functions": {
-    "pages/api/contact.ts": {
+    "pages/api/*.ts": {
       "maxDuration": 10
     }
   },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/pages/api/$1"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/api/(.*)",
+      "destination": "/pages/api/$1"
     }
   ]
 }
