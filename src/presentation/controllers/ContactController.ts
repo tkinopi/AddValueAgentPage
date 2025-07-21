@@ -1,11 +1,21 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { SubmitContactInquiryUseCase } from '../../application/usecases/SubmitContactInquiryUseCase';
 import { ContactRequestDto } from '../../application/dto/ContactRequestDto';
+
+interface RequestLike {
+  method?: string;
+  body: any;
+}
+
+interface ResponseLike {
+  status: (code: number) => {
+    json: (data: any) => void;
+  };
+}
 
 export class ContactController {
   constructor(private readonly submitContactInquiryUseCase: SubmitContactInquiryUseCase) {}
 
-  async handleContactSubmission(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+  async handleContactSubmission(req: RequestLike, res: ResponseLike): Promise<void> {
     if (req.method !== 'POST') {
       res.status(405).json({ message: 'Method not allowed' });
       return;
