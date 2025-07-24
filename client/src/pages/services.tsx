@@ -37,14 +37,14 @@ export default function ServicesPage() {
     {
       title: "ADD VALUE SES",
       subtitle: "SES事業",
-      description: "システムエンジニアリングサービスとして、お客様のプロジェクトに最適な技術者を派遣いたします。短期から長期まで、柔軟な契約形態に対応しております。",
+      description: "システムエンジニアリングサービスとして、お客様のプロジェクトに最適な技術者を紹介いたします。短期から長期まで、柔軟な契約形態に対応しております。",
       features: [
         "Webアプリケーション開発",
         "インフラ構築・運用",
         "データベース設計・構築",
         "システム保守・運用"
       ],
-      mockupContent: "技術者派遣",
+      mockupContent: "技術者紹介",
       bgColor: "bg-green-500",
       shapeColor: "bg-green-500"
     },

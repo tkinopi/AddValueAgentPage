@@ -21,7 +21,7 @@ export default function SesPage() {
               <h1 className="text-5xl font-bold mb-6">ADD VALUE SES</h1>
               <p className="text-xl mb-8 opacity-90">SES事業</p>
               <p className="text-lg leading-relaxed max-w-2xl mx-auto">
-                システムエンジニアリングサービスとして、お客様のプロジェクトに最適な技術者を派遣いたします。短期から長期まで、柔軟な契約形態に対応しております。
+                システムエンジニアリングサービスとして、お客様のプロジェクトに最適な技術者を紹介いたします。短期から長期まで、柔軟な契約形態に対応しております。
               </p>
             </motion.div>
           </div>
@@ -40,7 +40,7 @@ export default function SesPage() {
               >
                 <h2 className="text-3xl font-bold text-japanese-dark mb-4">対応分野</h2>
                 <p className="text-japanese-secondary max-w-3xl mx-auto">
-                  幅広い技術領域に精通した優秀なエンジニアを派遣し、お客様のプロジェクト成功をサポートします。
+                  幅広い技術領域に精通した優秀なエンジニアを紹介し、お客様のプロジェクト成功をサポートします。
                 </p>
               </motion.div>
 
@@ -143,7 +143,7 @@ export default function SesPage() {
                       "月額固定料金",
                       "スキルレベル別単価",
                       "柔軟な期間設定",
-                      "チーム派遣対応"
+                      "チーム紹介対応"
                     ],
                     suitable: "継続的な開発案件、運用保守業務"
                   },
@@ -294,7 +294,7 @@ export default function SesPage() {
                 className="text-center mb-16"
               >
                 <h2 className="text-3xl font-bold text-japanese-dark mb-4">サービス提供フロー</h2>
-                <p className="text-japanese-secondary">お客様のご要望から技術者派遣まで、スムーズなプロセスでサポートします</p>
+                <p className="text-japanese-secondary">お客様のご要望から技術者紹介まで、スムーズなプロセスでサポートします</p>
               </motion.div>
 
               <div className="space-y-6">
@@ -358,7 +358,7 @@ export default function SesPage() {
             >
               <h2 className="text-3xl font-bold mb-4">優秀な技術者をお探しですか？</h2>
               <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-                ADD VALUE SESが豊富な経験を持つ技術者を迅速に派遣し、お客様のプロジェクト成功をサポートします。
+                ADD VALUE SESが豊富な経験を持つ技術者を紹介し、お客様のプロジェクト成功をサポートします。
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-green-500 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold">

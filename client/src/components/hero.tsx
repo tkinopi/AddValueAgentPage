@@ -26,7 +26,7 @@ export default function Hero() {
             <span className="block">ADD VALUE AGENT</span>
             <span className="block text-japanese-accent">採用で価値を創る</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90 text-shadow">
+          <p className="text-base md:text-2xl mb-8 max-w-3xl mx-auto opacity-90 text-shadow">
             人材紹介から採用コンサルティングまで、<br />
             企業の成長に必要な人的資源を提供します。
           </p>
