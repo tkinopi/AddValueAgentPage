@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Navigation />
       <Hero />
-      <Stats />
+      {/* <Stats /> */}
       <Services />
       <About />
       <Contact />

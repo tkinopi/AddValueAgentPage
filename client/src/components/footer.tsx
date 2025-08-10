@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center space-x-3 mb-4">
               <CompanyLogo size="md" className="text-white" />
-              <span className="text-xl font-bold">ADD VALUE AGENT</span>
+              <span className="text-xl font-bold">Add Value Agent</span>
             </div>
             <p className="text-gray-400 mb-4">
               採用で価値を創る、<br />

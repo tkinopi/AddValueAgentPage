@@ -23,7 +23,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight text-shadow-lg">
-            <span className="block">ADD VALUE AGENT</span>
+            <span className="block">Add Value Agent</span>
             <span className="block text-japanese-accent">採用で価値を創る</span>
           </h1>
           <p className="text-base md:text-2xl mb-8 max-w-3xl mx-auto opacity-90 text-shadow">

@@ -106,7 +106,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-japanese-secondary max-w-2xl mx-auto px-4"
           >
-            ADD VALUE AGENTは人材と企業をつなぐ総合的なサービスを提供します。<br />
+            Add Value Agentは人材と企業をつなぐ総合的なサービスを提供します。<br />
             優秀なチームや技術者との出会いを実現し、<br />
             ビジネスの課題解決に貢献します。
           </motion.p>

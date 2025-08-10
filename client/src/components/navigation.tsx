@@ -34,7 +34,7 @@ export default function Navigation() {
           <div className="flex justify-between items-center">
             <Link href="/" className="flex items-center space-x-3">
               <CompanyLogo size="lg" className="text-japanese-primary" />
-              <span className="text-2xl font-bold text-japanese-primary">ADD VALUE AGENT</span>
+              <span className="text-2xl font-bold text-japanese-primary">Add Value Agent</span>
             </Link>
             
             <div className="hidden md:flex space-x-8">
@@ -73,7 +73,7 @@ export default function Navigation() {
               <div className="flex justify-between items-center mb-8">
                 <Link href="/" onClick={closeMobileMenu} className="flex items-center space-x-3">
                   <CompanyLogo size="md" className="text-japanese-primary" />
-                  <span className="text-xl font-bold text-japanese-primary">ADD VALUE AGENT</span>
+                  <span className="text-xl font-bold text-japanese-primary">Add Value Agent</span>
                 </Link>
                 <button onClick={toggleMobileMenu} className="text-japanese-dark">
                   <i className="fas fa-times text-xl"></i>

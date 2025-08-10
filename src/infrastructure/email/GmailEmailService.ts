@@ -89,7 +89,7 @@ export class GmailEmailService implements IEmailService {
       </div>
       
       <p style="color: #666; font-size: 14px; margin-top: 30px;">
-        このメールは ADD VALUE AGENT のお問い合わせフォームから送信されました。<br>
+        このメールは Add Value Agent のお問い合わせフォームから送信されました。<br>
         送信日時: ${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
       </p>
     `;

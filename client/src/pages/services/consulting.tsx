@@ -118,32 +118,32 @@ export default function ConsultingPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
                   {
-                    metric: "40%",
+                    metric: "42%",
                     title: "採用コスト削減",
                     description: "効率的な採用プロセスにより採用単価を大幅に削減"
                   },
                   {
-                    metric: "60%",
+                    metric: "57%",
                     title: "採用期間短縮",
                     description: "戦略的アプローチで採用期間を平均60%短縮"
                   },
                   {
-                    metric: "85%",
+                    metric: "81%",
                     title: "採用成功率向上",
                     description: "適切な評価手法により採用成功率が向上"
                   },
                   {
-                    metric: "90%",
+                    metric: "86%",
                     title: "面接官満足度",
                     description: "研修により面接官のスキルと自信が向上"
                   },
                   {
-                    metric: "75%",
+                    metric: "70%",
                     title: "応募数増加",
                     description: "魅力的な求人票により応募数が増加"
                   },
                   {
-                    metric: "95%",
+                    metric: "91%",
                     title: "クライアント満足度",
                     description: "継続的なサポートで高い満足度を実現"
                   }

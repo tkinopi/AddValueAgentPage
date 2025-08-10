@@ -15,7 +15,7 @@ export default function CompanyLogo({ size = "md", className = "" }: CompanyLogo
   return (
     <img 
       src={companyLogoImage} 
-      alt="ADD VALUE AGENT Logo" 
+      alt="Add Value Agent Logo" 
       className={`${sizeClasses[size]} ${className} object-contain`}
     />
   );

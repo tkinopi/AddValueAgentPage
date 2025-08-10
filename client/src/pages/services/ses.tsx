@@ -119,7 +119,7 @@ export default function SesPage() {
         </section>
 
         {/* Contract Types */}
-        <section className="py-20 bg-gray-50">
+        {/* <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <motion.div
@@ -205,10 +205,10 @@ export default function SesPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Engineer Levels */}
-        <section className="py-20 bg-white">
+        {/* <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <motion.div
@@ -280,10 +280,10 @@ export default function SesPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Flow Section */}
-        <section className="py-20 bg-gray-50">
+        {/* <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <motion.div
@@ -345,7 +345,7 @@ export default function SesPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* CTA Section */}
         <section className="py-20 bg-green-500 text-white">
