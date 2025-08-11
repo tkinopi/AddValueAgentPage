@@ -1,0 +1,8 @@
+# Ignore server-side files
+.next/
+server/
+node_modules/
+backup/
+
+# Keep only static export files
+!out/

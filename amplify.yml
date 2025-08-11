@@ -1,23 +1,24 @@
 version: 1
-applications:
-  - appRoot: .
-    frontend:
-      phases:
-        preBuild:
-          commands:
-            - nvm use 20
-            - rm -rf .next out
-            - npm ci || npm install
-        build:
-          commands:
-            - npm run build
-      artifacts:
-        baseDirectory: out
-        files:
-          - '**/*'
-      cache:
-        paths:
-          - node_modules/**/*
-          - .next/cache/**/*
-      buildSettings:
-        commands: []
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm use 20
+        - rm -rf .next out
+        - npm ci || npm install
+    build:
+      commands:
+        - npm run build
+        - echo "Static export completed"
+        - ls -la out/
+    postBuild:
+      commands:
+        - rm -rf .next
+        - echo "Cleaned up .next directory"
+  artifacts:
+    baseDirectory: out
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
