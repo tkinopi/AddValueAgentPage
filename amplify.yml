@@ -5,6 +5,10 @@ frontend:
       commands:
         - nvm use 20
         - npm ci
+        - echo "Checking environment variables..."
+        - echo "GMAIL_USER is ${GMAIL_USER:+SET}"
+        - echo "GMAIL_APP_PASSWORD is ${GMAIL_APP_PASSWORD:+SET}"
+        - echo "CONTACT_EMAIL is ${CONTACT_EMAIL:+SET}"
     build:
       commands:
         - NEXT_TELEMETRY_DISABLED=1 npm run build

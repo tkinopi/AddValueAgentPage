@@ -58,11 +58,22 @@ export default async function handler(
       return res.status(400).json({ error: 'Invalid email format' })
     }
 
+    // Debug: Log environment variables (without exposing sensitive data)
+    console.log('Environment check:', {
+      GMAIL_USER: process.env.GMAIL_USER ? 'SET' : 'NOT SET',
+      GMAIL_APP_PASSWORD: process.env.GMAIL_APP_PASSWORD ? 'SET' : 'NOT SET',
+      CONTACT_EMAIL: process.env.CONTACT_EMAIL || 'NOT SET',
+      NODE_ENV: process.env.NODE_ENV
+    })
+
     // Check if Gmail credentials are configured
     if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-      console.error('Gmail credentials not configured')
+      console.error('Gmail credentials not configured:', {
+        GMAIL_USER: !!process.env.GMAIL_USER,
+        GMAIL_APP_PASSWORD: !!process.env.GMAIL_APP_PASSWORD
+      })
       return res.status(500).json({ 
-        error: 'サーバーの設定に問題があります。管理者にお問い合わせください。' 
+        error: 'メール設定エラー: Gmail認証情報が設定されていません。' 
       })
     }
 
@@ -143,31 +154,62 @@ export default async function handler(
     }
 
     // Create transporter and send emails
-    const transporter = createTransporter()
-    
-    // Send notification email
-    await transporter.sendMail(mailOptions)
-    
-    // Send auto-reply
-    await transporter.sendMail(autoReplyOptions)
+    try {
+      const transporter = createTransporter()
+      
+      console.log('Sending notification email to:', process.env.CONTACT_EMAIL || process.env.GMAIL_USER)
+      
+      // Send notification email
+      await transporter.sendMail(mailOptions)
+      console.log('Notification email sent successfully')
+      
+      // Send auto-reply
+      await transporter.sendMail(autoReplyOptions)
+      console.log('Auto-reply email sent successfully')
 
-    console.log('Contact inquiry processed:', {
-      name,
-      email,
-      company,
-      timestamp: new Date().toISOString()
+      console.log('Contact inquiry processed:', {
+        name,
+        email,
+        company,
+        timestamp: new Date().toISOString()
+      })
+
+      return res.status(200).json({
+        success: true,
+        message: 'お問い合わせを受け付けました。確認メールをお送りしましたのでご確認ください。'
+      })
+    } catch (mailError: any) {
+      console.error('Mail sending error:', {
+        message: mailError.message,
+        code: mailError.code,
+        command: mailError.command,
+        response: mailError.response
+      })
+      
+      // More specific error messages
+      if (mailError.code === 'EAUTH') {
+        return res.status(500).json({
+          error: 'メール認証エラー: Gmail認証に失敗しました。アプリパスワードを確認してください。'
+        })
+      }
+      
+      if (mailError.code === 'ECONNECTION') {
+        return res.status(500).json({
+          error: 'メール接続エラー: Gmailサーバーへの接続に失敗しました。'
+        })
+      }
+      
+      throw mailError // Re-throw to be caught by outer catch
+    }
+
+  } catch (error: any) {
+    console.error('Error processing contact inquiry:', {
+      message: error.message,
+      stack: error.stack
     })
-
-    return res.status(200).json({
-      success: true,
-      message: 'お問い合わせを受け付けました。確認メールをお送りしましたのでご確認ください。'
-    })
-
-  } catch (error) {
-    console.error('Error processing contact inquiry:', error)
     
     return res.status(500).json({
-      error: 'お問い合わせの送信に失敗しました。しばらく時間をおいて再度お試しください。'
+      error: error.message || 'お問い合わせの送信に失敗しました。しばらく時間をおいて再度お試しください。'
     })
   }
 }
