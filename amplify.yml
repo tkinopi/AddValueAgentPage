@@ -40,6 +40,11 @@ frontend:
         - echo "=== Copying other required server files ==="
         - cp .next/standalone/.next/routes-manifest.json .next/standalone/ || true
         - cp .next/standalone/.next/prerender-manifest.json .next/standalone/ || true
+        - echo "=== Creating root-level server files for Amplify ==="
+        - cp -r .next/standalone/server . || true
+        - cp .next/standalone/required-server-files.json . || true
+        - cp .next/standalone/.next/routes-manifest.json . || true
+        - cp .next/standalone/.next/prerender-manifest.json . || true
         - echo "=== Final standalone structure ==="
         - ls -la .next/standalone/
         - echo "=== Verifying required-server-files.json in standalone ==="
@@ -48,10 +53,18 @@ frontend:
         - find .next/standalone -name "*.nft.json" | head -10
         - echo "=== Complete standalone structure ==="
         - find .next/standalone -type f -name "*.json" | grep -E "(nft|required-server-files|routes-manifest|prerender-manifest)" | head -20
+        - echo "=== Root-level files for Amplify ==="
+        - ls -la | grep -E "(required-server-files|routes-manifest|prerender-manifest)" || echo "No root-level files found"
+        - echo "=== Root-level server directory ==="
+        - ls -la server/ | head -10 || echo "No root-level server directory found"
   artifacts:
-    baseDirectory: .next/standalone
+    baseDirectory: .
     files:
-      - '**/*'
+      - '.next/standalone/**/*'
+      - 'server/**/*'
+      - 'required-server-files.json'
+      - 'routes-manifest.json'
+      - 'prerender-manifest.json'
   cache:
     paths:
       - node_modules/**/*
