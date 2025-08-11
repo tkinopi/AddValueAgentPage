@@ -48,14 +48,8 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      // Lambda Function URL from environment variable
-      const functionUrl = process.env.NEXT_PUBLIC_LAMBDA_FUNCTION_URL;
-      
-      if (!functionUrl) {
-        throw new Error('Lambda Function URLが設定されていません');
-      }
-      
-      const response = await fetch(functionUrl, {
+      // Use Next.js API route
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
