@@ -28,8 +28,12 @@ frontend:
         - ls -la .next/standalone/ | head -10
         - echo "=== Copying public assets to standalone ==="
         - cp -r public .next/standalone/
+        - echo "=== Copying required-server-files.json to standalone root ==="
+        - cp .next/standalone/.next/required-server-files.json .next/standalone/required-server-files.json
         - echo "=== Final standalone structure ==="
         - ls -la .next/standalone/
+        - echo "=== Verifying required-server-files.json in standalone ==="
+        - ls -la .next/standalone/ | grep required-server-files || echo "No required-server-files.json in standalone root"
   artifacts:
     baseDirectory: .next/standalone
     files:
