@@ -22,6 +22,10 @@ frontend:
         - if [ -f .next/required-server-files.json ]; then cp .next/required-server-files.json ./required-server-files.json; echo "Copied to root"; fi
         - echo "=== Final check ==="
         - ls -la | grep required-server-files || echo "No required-server-files.json in root"
+        - echo "=== Checking for server trace files ==="
+        - find .next -name "*.nft.json" | head -10
+        - echo "=== Checking standalone directory ==="
+        - ls -la .next/standalone/ | head -10
   artifacts:
     baseDirectory: .
     files:
