@@ -49,7 +49,7 @@ export default function Contact() {
     
     try {
       // Lambda Function URL from environment variable
-      const functionUrl = import.meta.env.VITE_LAMBDA_FUNCTION_URL;
+      const functionUrl = process.env.NEXT_PUBLIC_LAMBDA_FUNCTION_URL;
       
       if (!functionUrl) {
         throw new Error('Lambda Function URLが設定されていません');
