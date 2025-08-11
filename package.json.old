@@ -8,11 +8,13 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:client\"",
+    "dev:client": "cd client && vite dev",
+    "dev:api": "node dev-server.js",
+    "build": "cd client && vite build",
+    "preview": "cd client && vite preview",
     "check": "tsc",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf client/dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
