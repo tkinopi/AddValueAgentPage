@@ -188,14 +188,13 @@ export default function ContactPage() {
                       <h3 className="font-semibold text-japanese-dark mb-1">所在地</h3>
                       <p className="text-gray-700">
                         〒651-2112<br />
-                        兵庫県神戸市西区大津和2丁目8番2号<br />
-                        千代田ビル10F
+                        兵庫県神戸市西区大津和2丁目8番2号
                       </p>
                     </div>
-                    <div>
+                    {/* <div>
                       <h3 className="font-semibold text-japanese-dark mb-1">電話番号</h3>
                       <p className="text-gray-700">03-1234-5678</p>
-                    </div>
+                    </div> */}
                     <div>
                       <h3 className="font-semibold text-japanese-dark mb-1">メールアドレス</h3>
                       <p className="text-gray-700">info@addvalue-agent.co.jp</p>
@@ -230,14 +229,14 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="bg-japanese-light rounded-lg p-6">
+                {/* <div className="bg-japanese-light rounded-lg p-6">
                   <h3 className="font-semibold text-japanese-dark mb-2">お急ぎの場合</h3>
                   <p className="text-gray-700 text-sm mb-3">
                     お急ぎの場合は、お電話でのお問い合わせも承っております。
                   </p>
                   <p className="text-lg font-bold text-japanese-primary">03-1234-5678</p>
                   <p className="text-sm text-gray-600">受付時間：平日 9:00〜18:00</p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

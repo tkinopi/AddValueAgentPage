@@ -31,10 +31,10 @@ export default function AboutPage() {
                     <h3 className="font-semibold text-japanese-dark mb-2">資本金</h3>
                     <p className="text-gray-700 mb-4">500万円</p>
                   </div>
-                  <div>
+                  {/* <div>
                     <h3 className="font-semibold text-japanese-dark mb-2">従業員数</h3>
                     <p className="text-gray-700 mb-4">25名</p>
-                  </div>
+                  </div> */}
                   <div className="md:col-span-2">
                     <h3 className="font-semibold text-japanese-dark mb-2">所在地</h3>
                     <p className="text-gray-700 mb-4">

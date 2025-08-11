@@ -119,7 +119,6 @@ export class GmailEmailService implements IEmailService {
       </div>
       
       <p>担当者が内容を確認の上、2営業日以内にご連絡させていただきます。</p>
-      <p>お急ぎの場合は、お電話（03-1234-5678）でもお問い合わせを承っております。</p>
       
       <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
       
@@ -127,7 +126,6 @@ export class GmailEmailService implements IEmailService {
         <strong>株式会社アドバリューエージェント</strong><br>
         〒651-2112<br>
         兵庫県神戸市西区大津和2丁目8番2号<br>
-        TEL: 03-1234-5678<br>
         Email: info@addvalue-agent.co.jp<br>
         営業時間: 平日 9:00〜18:00
       </div>

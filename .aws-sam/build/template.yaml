@@ -1,0 +1,95 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Add Value Agent Backend with Lambda Function URLs
+Globals:
+  Function:
+    Timeout: 30
+    Runtime: nodejs18.x
+    Environment:
+      Variables:
+        NODE_ENV:
+          Ref: Environment
+        ALLOWED_ORIGIN:
+          Ref: AllowedOrigin
+        GMAIL_USER:
+          Ref: GmailUser
+        GMAIL_APP_PASSWORD:
+          Ref: GmailAppPassword
+        RECIPIENT_EMAIL:
+          Ref: RecipientEmail
+Parameters:
+  Environment:
+    Type: String
+    Default: production
+    AllowedValues:
+    - development
+    - staging
+    - production
+    Description: Environment name
+  AllowedOrigin:
+    Type: String
+    Default: https://main.example.amplifyapp.com
+    Description: Allowed CORS origin for Lambda Function URL
+  GmailUser:
+    Type: String
+    NoEcho: true
+    Description: Gmail user email address
+  GmailAppPassword:
+    Type: String
+    NoEcho: true
+    Description: Gmail app-specific password
+  RecipientEmail:
+    Type: String
+    Description: Email address to receive contact form submissions
+Resources:
+  ContactFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName:
+        Fn::Sub: ${AWS::StackName}-contact
+      CodeUri: ContactFunction
+      Handler: index.handler
+      FunctionUrlConfig:
+        AuthType: NONE
+        Cors:
+          AllowOrigins:
+          - Ref: AllowedOrigin
+          AllowMethods:
+          - '*'
+          AllowHeaders:
+          - Content-Type
+          - X-Amz-Date
+          - Authorization
+          - X-Api-Key
+          - X-Amz-Security-Token
+          MaxAge: 86400
+      Policies:
+      - Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          Resource: '*'
+    Metadata:
+      SamResourceId: ContactFunction
+Outputs:
+  ContactFunctionUrl:
+    Description: Lambda Function URL for contact form
+    Value:
+      Fn::GetAtt:
+      - ContactFunctionUrl
+      - FunctionUrl
+    Export:
+      Name:
+        Fn::Sub: ${AWS::StackName}-ContactFunctionUrl
+  ContactFunctionArn:
+    Description: Contact Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - ContactFunction
+      - Arn
+    Export:
+      Name:
+        Fn::Sub: ${AWS::StackName}-ContactFunctionArn

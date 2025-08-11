@@ -19,7 +19,9 @@ export default function Contact() {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -43,19 +45,52 @@ export default function Contact() {
       return;
     }
     
-    // Success message
-    toast({
-      title: "送信完了",
-      description: "お問い合わせありがとうございます。担当者よりご連絡いたします。",
-    });
+    setIsSubmitting(true);
     
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: ""
-    });
+    try {
+      // Lambda Function URL from environment variable
+      const functionUrl = import.meta.env.VITE_LAMBDA_FUNCTION_URL;
+      
+      if (!functionUrl) {
+        throw new Error('Lambda Function URLが設定されていません');
+      }
+      
+      const response = await fetch(functionUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'お問い合わせの送信に失敗しました');
+      }
+      
+      // Success message
+      toast({
+        title: "送信完了",
+        description: data.message || "お問い合わせありがとうございます。担当者よりご連絡いたします。",
+      });
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: ""
+      });
+    } catch (error) {
+      toast({
+        title: "送信エラー",
+        description: error instanceof Error ? error.message : "お問い合わせの送信に失敗しました。",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -71,11 +106,11 @@ export default function Contact() {
       title: "所在地",
       content: "〒651-2112\n兵庫県神戸市西区大津和2丁目8番2号"
     },
-    {
-      icon: "fas fa-phone",
-      title: "電話番号",
-      content: "03-1234-5678"
-    },
+    // {
+    //   icon: "fas fa-phone",
+    //   title: "電話番号",
+    //   content: "03-1234-5678"
+    // },
     {
       icon: "fas fa-envelope",
       title: "メールアドレス",
@@ -200,9 +235,22 @@ export default function Contact() {
                   />
                 </div>
                 
-                <Button type="submit" className="w-full bg-japanese-primary hover:bg-japanese-primary/90 text-white py-3 px-6 rounded-lg font-semibold">
-                  <i className="fas fa-paper-plane mr-2"></i>
-                  送信する
+                <Button 
+                  type="submit" 
+                  className="w-full bg-japanese-primary hover:bg-japanese-primary/90 text-white py-3 px-6 rounded-lg font-semibold"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <i className="fas fa-spinner fa-spin mr-2"></i>
+                      送信中...
+                    </>
+                  ) : (
+                    <>
+                      <i className="fas fa-paper-plane mr-2"></i>
+                      送信する
+                    </>
+                  )}
                 </Button>
               </form>
             </motion.div>

@@ -51,14 +51,14 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-400">
               <li>〒651-2112</li>
               <li>兵庫県神戸市西区大津和2丁目8番2号</li>
-              <li>TEL: 03-1234-5678</li>
+              {/* <li>TEL: 03-1234-5678</li> */}
               <li>EMAIL: info@addvalue-agent.co.jp</li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 株式会社アドバリューエージェント. All rights reserved.</p>
+          <p>&copy; 2025 株式会社アドバリューエージェント. All rights reserved.</p>
         </div>
       </div>
     </footer>
