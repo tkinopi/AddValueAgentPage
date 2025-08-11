@@ -11,6 +11,9 @@ frontend:
         - echo "CONTACT_EMAIL is ${CONTACT_EMAIL:+SET}"
     build:
       commands:
+        - export GMAIL_USER=$GMAIL_USER
+        - export GMAIL_APP_PASSWORD=$GMAIL_APP_PASSWORD
+        - export CONTACT_EMAIL=$CONTACT_EMAIL
         - NEXT_TELEMETRY_DISABLED=1 npm run build
   artifacts:
     baseDirectory: .next

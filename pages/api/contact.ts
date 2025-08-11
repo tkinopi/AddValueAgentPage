@@ -16,11 +16,19 @@ type ContactResponse = {
 }
 
 const createTransporter = () => {
+  // Get environment variables
+  const gmailUser = process.env.GMAIL_USER
+  const gmailPassword = process.env.GMAIL_APP_PASSWORD
+  
+  if (!gmailUser || !gmailPassword) {
+    throw new Error('Gmail credentials not configured in environment')
+  }
+  
   return nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASSWORD
+      user: gmailUser,
+      pass: gmailPassword
     }
   })
 }
