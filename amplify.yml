@@ -30,10 +30,21 @@ frontend:
         - cp -r public .next/standalone/
         - echo "=== Copying required-server-files.json to standalone root ==="
         - cp .next/standalone/.next/required-server-files.json .next/standalone/required-server-files.json
+        - echo "=== Creating server trace files structure in standalone ==="
+        - mkdir -p .next/standalone/server/pages/services
+        - cp -r .next/standalone/.next/server/pages/*.nft.json .next/standalone/server/pages/ || true
+        - cp -r .next/standalone/.next/server/pages/services/*.nft.json .next/standalone/server/pages/services/ || true
+        - echo "=== Copying other required server files ==="
+        - cp .next/standalone/.next/routes-manifest.json .next/standalone/ || true
+        - cp .next/standalone/.next/prerender-manifest.json .next/standalone/ || true
         - echo "=== Final standalone structure ==="
         - ls -la .next/standalone/
         - echo "=== Verifying required-server-files.json in standalone ==="
         - ls -la .next/standalone/ | grep required-server-files || echo "No required-server-files.json in standalone root"
+        - echo "=== Verifying server trace files in standalone ==="
+        - find .next/standalone -name "*.nft.json" | head -10
+        - echo "=== Complete standalone structure ==="
+        - find .next/standalone -type f -name "*.json" | grep -E "(nft|required-server-files|routes-manifest|prerender-manifest)" | head -20
   artifacts:
     baseDirectory: .next/standalone
     files:
