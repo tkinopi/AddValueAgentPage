@@ -1,0 +1,6 @@
+{
+  "hosting": {
+    "type": "SINGLE_PAGE_APP",
+    "framework": "react"
+  }
+}
