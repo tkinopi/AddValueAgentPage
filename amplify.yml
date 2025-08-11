@@ -26,12 +26,14 @@ frontend:
         - find .next -name "*.nft.json" | head -10
         - echo "=== Checking standalone directory ==="
         - ls -la .next/standalone/ | head -10
+        - echo "=== Copying public assets to standalone ==="
+        - cp -r public .next/standalone/
+        - echo "=== Final standalone structure ==="
+        - ls -la .next/standalone/
   artifacts:
-    baseDirectory: .
+    baseDirectory: .next/standalone
     files:
       - '**/*'
-      - '!node_modules/**/*'
-      - '!backup/**/*'
   cache:
     paths:
       - node_modules/**/*
