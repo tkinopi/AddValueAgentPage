@@ -4,78 +4,14 @@ frontend:
     preBuild:
       commands:
         - nvm use 20
-        - npm ci || npm install
+        - npm ci
     build:
       commands:
-        - export NEXT_TELEMETRY_DISABLED=1
-        - npm run build
-        - echo "Next.js SSR build completed"
-        - echo "=== Checking .next directory ==="
-        - ls -la .next/
-        - echo "=== Checking for required-server-files.json ==="
-        - if [ -f .next/required-server-files.json ]; then echo "✅ required-server-files.json EXISTS"; cat .next/required-server-files.json | head -20; else echo "❌ required-server-files.json NOT FOUND"; fi
-        - echo "=== Current directory structure ==="
-        - find . -name "required-server-files.json" -type f
-        - echo "=== All .json files in .next ==="
-        - find .next -name "*.json" -type f
-        - echo "=== Ensuring required-server-files.json is accessible ==="
-        - if [ -f .next/required-server-files.json ]; then cp .next/required-server-files.json ./required-server-files.json; echo "Copied to root"; fi
-        - echo "=== Final check ==="
-        - ls -la | grep required-server-files || echo "No required-server-files.json in root"
-        - echo "=== Checking for server trace files ==="
-        - find .next -name "*.nft.json" | head -10
-        - echo "=== Checking standalone directory ==="
-        - ls -la .next/standalone/ | head -10
-        - echo "=== Copying public assets to standalone ==="
-        - cp -r public .next/standalone/
-        - echo "=== Copying required-server-files.json to standalone root ==="
-        - cp .next/standalone/.next/required-server-files.json .next/standalone/required-server-files.json
-        - echo "=== Creating server trace files structure in standalone ==="
-        - mkdir -p .next/standalone/server/pages/services
-        - echo "=== Copying individual nft.json files ==="
-        - find .next/standalone/.next/server/pages -name "*.nft.json" -not -path "*/services/*" -exec cp {} .next/standalone/server/pages/ \;
-        - find .next/standalone/.next/server/pages/services -name "*.nft.json" -exec cp {} .next/standalone/server/pages/services/ \; 2>/dev/null || true
-        - echo "=== Creating ROOT-LEVEL server/pages structure ==="
-        - mkdir -p ./server/pages/services
-        - echo "=== Copying .nft.json files to ROOT server/pages ==="
-        - find .next/standalone/.next/server/pages -name "*.nft.json" -not -path "*/services/*" -exec cp {} ./server/pages/ \;
-        - find .next/standalone/.next/server/pages/services -name "*.nft.json" -exec cp {} ./server/pages/services/ \; 2>/dev/null || true
-        - echo "=== Copying server directory structure ==="
-        - cp -r .next/standalone/.next/server .next/standalone/ || true
-        - echo "=== Copying other required server files ==="
-        - cp .next/standalone/.next/routes-manifest.json .next/standalone/ || true
-        - cp .next/standalone/.next/prerender-manifest.json .next/standalone/ || true
-        - echo "=== Creating root-level server files for Amplify ==="
-        - echo "Copying server directory..."
-        - cp -r .next/standalone/server . && echo "Server directory copied" || echo "Failed to copy server directory"
-        - echo "Copying required-server-files.json..."
-        - cp .next/standalone/required-server-files.json . && echo "required-server-files.json copied" || echo "Failed to copy required-server-files.json"
-        - echo "Copying manifest files..."
-        - cp .next/standalone/.next/routes-manifest.json ./routes-manifest.json && echo "routes-manifest.json copied" || echo "Failed to copy routes-manifest.json"
-        - cp .next/standalone/.next/prerender-manifest.json ./prerender-manifest.json && echo "prerender-manifest.json copied" || echo "Failed to copy prerender-manifest.json"
-        - echo "=== Final standalone structure ==="
-        - ls -la .next/standalone/
-        - echo "=== Verifying required-server-files.json in standalone ==="
-        - ls -la .next/standalone/ | grep required-server-files || echo "No required-server-files.json in standalone root"
-        - echo "=== Verifying server trace files in standalone ==="
-        - find .next/standalone -name "*.nft.json" | head -10
-        - echo "=== Complete standalone structure ==="
-        - find .next/standalone -type f -name "*.json" | grep -E "(nft|required-server-files|routes-manifest|prerender-manifest)" | head -20
-        - echo "=== Root-level files for Amplify ==="
-        - ls -la | grep -E "(required-server-files|routes-manifest|prerender-manifest)" || echo "No root-level files found"
-        - echo "=== Root-level server directory ==="
-        - ls -la server/ | head -10 || echo "No root-level server directory found"
-        - echo "=== Checking server/pages directory ==="
-        - ls -la server/pages/ || echo "No server/pages directory found"
-        - echo "=== Checking for .nft.json files in server/pages ==="
-        - find server -name "*.nft.json" | head -10 || echo "No .nft.json files in server directory"
+        - NEXT_TELEMETRY_DISABLED=1 npm run build
   artifacts:
-    baseDirectory: .
+    baseDirectory: .next
     files:
       - '**/*'
-      - '!node_modules/**/*'
-      - '!backup/**/*'
   cache:
     paths:
       - node_modules/**/*
-      - .next/cache/**/*
