@@ -9,12 +9,16 @@ export default function Lightbox() {
   const openLightbox = (src: string) => {
     setImageSrc(src);
     setIsOpen(true);
-    document.body.style.overflow = "hidden";
+    if (typeof window !== 'undefined') {
+      document.body.style.overflow = "hidden";
+    }
   };
 
   const closeLightbox = () => {
     setIsOpen(false);
-    document.body.style.overflow = "auto";
+    if (typeof window !== 'undefined') {
+      document.body.style.overflow = "auto";
+    }
     setImageSrc("");
   };
 
@@ -25,12 +29,14 @@ export default function Lightbox() {
       }
     };
 
-    if (isOpen) {
+    if (isOpen && typeof window !== 'undefined') {
       document.addEventListener("keydown", handleEscape);
     }
 
     return () => {
-      document.removeEventListener("keydown", handleEscape);
+      if (typeof window !== 'undefined') {
+        document.removeEventListener("keydown", handleEscape);
+      }
     };
   }, [isOpen]);
 
