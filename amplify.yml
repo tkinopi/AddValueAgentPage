@@ -4,30 +4,19 @@ frontend:
     preBuild:
       commands:
         - nvm use 20
-        - rm -rf .next out
         - npm ci || npm install
     build:
       commands:
         - npm run build
-        - echo "Static export completed"
-        - ls -la out/
-        - echo "Creating required server files for WEB_COMPUTE compatibility"
-        - mkdir -p .next
-        - echo '{"version":3,"files":{},"ignore":[]}' > .next/required-server-files.json
-        - echo '{"version":3,"routes":{"/":["/"]}}' > .next/routes-manifest.json
-        - echo '{"version":3,"routes":{},"dynamicRoutes":{},"notFoundRoutes":[],"preview":{"previewModeId":"development-id","previewModeSigningKey":"development-key","previewModeEncryptionKey":"development-key"}}' > .next/prerender-manifest.json
-        - echo "Created compatibility files"
+        - echo "Next.js SSR build completed"
         - ls -la .next/
-    postBuild:
-      commands:
-        - echo "Build completed successfully"
   artifacts:
     baseDirectory: .
     files:
-      - 'out/**/*'
-      - '.next/required-server-files.json'
-      - '.next/routes-manifest.json'
-      - '.next/prerender-manifest.json'
+      - '**/*'
+      - '!node_modules/**/*'
+      - '!backup/**/*'
   cache:
     paths:
       - node_modules/**/*
+      - .next/cache/**/*
