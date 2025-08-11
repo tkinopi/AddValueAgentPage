@@ -32,8 +32,11 @@ frontend:
         - cp .next/standalone/.next/required-server-files.json .next/standalone/required-server-files.json
         - echo "=== Creating server trace files structure in standalone ==="
         - mkdir -p .next/standalone/server/pages/services
-        - cp -r .next/standalone/.next/server/pages/*.nft.json .next/standalone/server/pages/ || true
-        - cp -r .next/standalone/.next/server/pages/services/*.nft.json .next/standalone/server/pages/services/ || true
+        - echo "=== Copying individual nft.json files ==="
+        - find .next/standalone/.next/server/pages -name "*.nft.json" -not -path "*/services/*" -exec cp {} .next/standalone/server/pages/ \;
+        - find .next/standalone/.next/server/pages/services -name "*.nft.json" -exec cp {} .next/standalone/server/pages/services/ \; 2>/dev/null || true
+        - echo "=== Copying server directory structure ==="
+        - cp -r .next/standalone/.next/server .next/standalone/ || true
         - echo "=== Copying other required server files ==="
         - cp .next/standalone/.next/routes-manifest.json .next/standalone/ || true
         - cp .next/standalone/.next/prerender-manifest.json .next/standalone/ || true
