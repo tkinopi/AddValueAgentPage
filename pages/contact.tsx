@@ -209,7 +209,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg shadow-lg p-8">
+                {/* <div className="bg-white rounded-lg shadow-lg p-8">
                   <h2 className="text-2xl font-bold text-japanese-dark mb-6">アクセス</h2>
                   <div className="space-y-4">
                     <div>
@@ -227,7 +227,7 @@ export default function ContactPage() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 {/* <div className="bg-japanese-light rounded-lg p-6">
                   <h3 className="font-semibold text-japanese-dark mb-2">お急ぎの場合</h3>
