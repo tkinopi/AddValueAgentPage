@@ -6,6 +6,7 @@ applications:
         preBuild:
           commands:
             - nvm use 20
+            - rm -rf .next out
             - npm ci || npm install
         build:
           commands:
