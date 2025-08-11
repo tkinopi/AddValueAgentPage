@@ -7,9 +7,21 @@ frontend:
         - npm ci || npm install
     build:
       commands:
+        - export NEXT_TELEMETRY_DISABLED=1
         - npm run build
         - echo "Next.js SSR build completed"
+        - echo "=== Checking .next directory ==="
         - ls -la .next/
+        - echo "=== Checking for required-server-files.json ==="
+        - if [ -f .next/required-server-files.json ]; then echo "✅ required-server-files.json EXISTS"; cat .next/required-server-files.json | head -20; else echo "❌ required-server-files.json NOT FOUND"; fi
+        - echo "=== Current directory structure ==="
+        - find . -name "required-server-files.json" -type f
+        - echo "=== All .json files in .next ==="
+        - find .next -name "*.json" -type f
+        - echo "=== Ensuring required-server-files.json is accessible ==="
+        - if [ -f .next/required-server-files.json ]; then cp .next/required-server-files.json ./required-server-files.json; echo "Copied to root"; fi
+        - echo "=== Final check ==="
+        - ls -la | grep required-server-files || echo "No required-server-files.json in root"
   artifacts:
     baseDirectory: .
     files:
