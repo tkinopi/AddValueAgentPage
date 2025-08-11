@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import Link from "next/link";
 import CompanyLogo from "./CompanyLogo";
 
 export default function Footer() {
