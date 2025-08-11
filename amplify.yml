@@ -35,6 +35,11 @@ frontend:
         - echo "=== Copying individual nft.json files ==="
         - find .next/standalone/.next/server/pages -name "*.nft.json" -not -path "*/services/*" -exec cp {} .next/standalone/server/pages/ \;
         - find .next/standalone/.next/server/pages/services -name "*.nft.json" -exec cp {} .next/standalone/server/pages/services/ \; 2>/dev/null || true
+        - echo "=== Creating ROOT-LEVEL server/pages structure ==="
+        - mkdir -p ./server/pages/services
+        - echo "=== Copying .nft.json files to ROOT server/pages ==="
+        - find .next/standalone/.next/server/pages -name "*.nft.json" -not -path "*/services/*" -exec cp {} ./server/pages/ \;
+        - find .next/standalone/.next/server/pages/services -name "*.nft.json" -exec cp {} ./server/pages/services/ \; 2>/dev/null || true
         - echo "=== Copying server directory structure ==="
         - cp -r .next/standalone/.next/server .next/standalone/ || true
         - echo "=== Copying other required server files ==="
@@ -60,6 +65,10 @@ frontend:
         - ls -la | grep -E "(required-server-files|routes-manifest|prerender-manifest)" || echo "No root-level files found"
         - echo "=== Root-level server directory ==="
         - ls -la server/ | head -10 || echo "No root-level server directory found"
+        - echo "=== Checking server/pages directory ==="
+        - ls -la server/pages/ || echo "No server/pages directory found"
+        - echo "=== Checking for .nft.json files in server/pages ==="
+        - find server -name "*.nft.json" | head -10 || echo "No .nft.json files in server directory"
   artifacts:
     baseDirectory: .
     files:
