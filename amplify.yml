@@ -41,10 +41,13 @@ frontend:
         - cp .next/standalone/.next/routes-manifest.json .next/standalone/ || true
         - cp .next/standalone/.next/prerender-manifest.json .next/standalone/ || true
         - echo "=== Creating root-level server files for Amplify ==="
-        - cp -r .next/standalone/server . || true
-        - cp .next/standalone/required-server-files.json . || true
-        - cp .next/standalone/.next/routes-manifest.json . || true
-        - cp .next/standalone/.next/prerender-manifest.json . || true
+        - echo "Copying server directory..."
+        - cp -r .next/standalone/server . && echo "Server directory copied" || echo "Failed to copy server directory"
+        - echo "Copying required-server-files.json..."
+        - cp .next/standalone/required-server-files.json . && echo "required-server-files.json copied" || echo "Failed to copy required-server-files.json"
+        - echo "Copying manifest files..."
+        - cp .next/standalone/.next/routes-manifest.json ./routes-manifest.json && echo "routes-manifest.json copied" || echo "Failed to copy routes-manifest.json"
+        - cp .next/standalone/.next/prerender-manifest.json ./prerender-manifest.json && echo "prerender-manifest.json copied" || echo "Failed to copy prerender-manifest.json"
         - echo "=== Final standalone structure ==="
         - ls -la .next/standalone/
         - echo "=== Verifying required-server-files.json in standalone ==="
@@ -60,11 +63,9 @@ frontend:
   artifacts:
     baseDirectory: .
     files:
-      - '.next/standalone/**/*'
-      - 'server/**/*'
-      - 'required-server-files.json'
-      - 'routes-manifest.json'
-      - 'prerender-manifest.json'
+      - '**/*'
+      - '!node_modules/**/*'
+      - '!backup/**/*'
   cache:
     paths:
       - node_modules/**/*
