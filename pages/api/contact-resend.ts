@@ -140,7 +140,7 @@ export default async function handler(
         to: process.env.CONTACT_EMAIL || 'info@addvalueagent.com',
         subject: `【お問い合わせ】${name}様より`,
         html: adminEmailHtml,
-        reply_to: email
+        replyTo: email
       })
 
       console.log('Admin notification sent:', adminEmail.data?.id)
