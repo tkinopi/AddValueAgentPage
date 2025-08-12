@@ -109,7 +109,7 @@ export default function Contact() {
     {
       icon: "fas fa-envelope",
       title: "メールアドレス",
-      content: "info@addvalue-agent.co.jp"
+      content: "info@addvalueagent.com"
     },
     {
       icon: "fas fa-clock",

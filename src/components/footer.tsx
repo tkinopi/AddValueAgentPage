@@ -52,7 +52,7 @@ export default function Footer() {
               <li>〒651-2112</li>
               <li>兵庫県神戸市西区大津和2丁目8番2号</li>
               {/* <li>TEL: 03-1234-5678</li> */}
-              <li>EMAIL: info@addvalue-agent.co.jp</li>
+              <li>EMAIL: info@addvalueagent.com</li>
             </ul>
           </div>
         </div>

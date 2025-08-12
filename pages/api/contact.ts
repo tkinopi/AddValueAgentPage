@@ -151,7 +151,7 @@ export default async function handler(
           <div style="color: #666; font-size: 14px;">
             <p><strong>株式会社アドバリューエージェント</strong></p>
             <p>〒651-2112 兵庫県神戸市西区大津和2丁目8番2号</p>
-            <p>Email: info@addvalue-agent.co.jp</p>
+            <p>Email: info@addvalueagent.com</p>
           </div>
           
           <p style="color: #999; font-size: 12px; margin-top: 20px;">

@@ -197,7 +197,7 @@ export default function ContactPage() {
                     </div> */}
                     <div>
                       <h3 className="font-semibold text-japanese-dark mb-1">メールアドレス</h3>
-                      <p className="text-gray-700">info@addvalue-agent.co.jp</p>
+                      <p className="text-gray-700">info@addvalueagent.com</p>
                     </div>
                     <div>
                       <h3 className="font-semibold text-japanese-dark mb-1">営業時間</h3>
