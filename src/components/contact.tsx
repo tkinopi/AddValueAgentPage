@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { Loader2, Send } from "lucide-react";
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
@@ -181,6 +182,7 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className="mt-2"
                   />
                 </div>
@@ -196,6 +198,7 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className="mt-2"
                   />
                 </div>
@@ -210,6 +213,7 @@ export default function Contact() {
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className="mt-2"
                   />
                 </div>
@@ -225,23 +229,24 @@ export default function Contact() {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className="mt-2 resize-none"
                   />
                 </div>
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-japanese-primary hover:bg-japanese-primary/90 text-white py-3 px-6 rounded-lg font-semibold"
+                  className="w-full bg-japanese-primary hover:bg-japanese-primary/90 disabled:bg-japanese-primary/50 disabled:cursor-not-allowed text-white py-3 px-6 rounded-lg font-semibold transition-all duration-200"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
                     <>
-                      <i className="fas fa-spinner fa-spin mr-2"></i>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                       送信中...
                     </>
                   ) : (
                     <>
-                      <i className="fas fa-paper-plane mr-2"></i>
+                      <Send className="mr-2 h-4 w-4" />
                       送信する
                     </>
                   )}

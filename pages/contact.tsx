@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Loader2, Send } from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,8 @@ export default function ContactPage() {
     inquiry_type: "",
     message: ""
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,6 +28,8 @@ export default function ContactPage() {
       alert("必須項目を入力してください。");
       return;
     }
+
+    setIsSubmitting(true);
 
     try {
       console.log("Submitting form data:", formData);
@@ -73,6 +78,8 @@ export default function ContactPage() {
       } else {
         alert("送信中にエラーが発生しました。もう一度お試しください。");
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -101,6 +108,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={(e) => handleChange("name", e.target.value)}
                       required
+                      disabled={isSubmitting}
                       className="mt-1"
                     />
                   </div>
@@ -113,6 +121,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={(e) => handleChange("email", e.target.value)}
                       required
+                      disabled={isSubmitting}
                       className="mt-1"
                     />
                   </div>
@@ -124,6 +133,7 @@ export default function ContactPage() {
                       type="text"
                       value={formData.company}
                       onChange={(e) => handleChange("company", e.target.value)}
+                      disabled={isSubmitting}
                       className="mt-1"
                     />
                   </div>
@@ -135,13 +145,14 @@ export default function ContactPage() {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => handleChange("phone", e.target.value)}
+                      disabled={isSubmitting}
                       className="mt-1"
                     />
                   </div>
 
                   <div>
                     <Label htmlFor="inquiry_type">お問い合わせ種別 *</Label>
-                    <Select onValueChange={(value) => handleChange("inquiry_type", value)} required>
+                    <Select onValueChange={(value) => handleChange("inquiry_type", value)} required disabled={isSubmitting}>
                       <SelectTrigger className="mt-1">
                         <SelectValue placeholder="選択してください" />
                       </SelectTrigger>
@@ -163,14 +174,29 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={(e) => handleChange("message", e.target.value)}
                       required
+                      disabled={isSubmitting}
                       rows={6}
                       className="mt-1"
                       placeholder="お問い合わせ内容をご記入ください"
                     />
                   </div>
 
-                  <Button type="submit" className="w-full bg-japanese-primary hover:bg-japanese-primary/90">
-                    送信する
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-japanese-primary hover:bg-japanese-primary/90 disabled:bg-japanese-primary/50 disabled:cursor-not-allowed transition-all duration-200"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        送信中...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-4 w-4" />
+                        送信する
+                      </>
+                    )}
                   </Button>
                 </form>
               </div>
