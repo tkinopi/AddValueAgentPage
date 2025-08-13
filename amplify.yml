@@ -14,6 +14,11 @@ frontend:
         - export GMAIL_USER=$GMAIL_USER
         - export GMAIL_APP_PASSWORD=$GMAIL_APP_PASSWORD
         - export CONTACT_EMAIL=$CONTACT_EMAIL
+        - export RESEND_API_KEY=$RESEND_API_KEY
+        - export RESEND_DNS_VERIFIED=$RESEND_DNS_VERIFIED
+        - export RESEND_FROM_ADMIN=$RESEND_FROM_ADMIN
+        - export RESEND_FROM_CUSTOMER=$RESEND_FROM_CUSTOMER
+        - echo "RESEND_API_KEY is ${RESEND_API_KEY:+SET}"
         - NEXT_TELEMETRY_DISABLED=1 npm run build
   artifacts:
     baseDirectory: .next

@@ -16,8 +16,7 @@ type ContactResponse = {
   error?: string
 }
 
-// Resendクライアントの初期化
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Resendクライアントの初期化は関数内で行う（環境変数の確実な読み込みのため）
 
 // 送信元メールアドレスの設定
 // DNS認証前: 'onboarding@resend.dev'を使用
@@ -71,13 +70,25 @@ export default async function handler(
       return res.status(400).json({ error: 'Invalid email format' })
     }
 
+    // Debug: Log environment check
+    console.log('Environment check:', {
+      RESEND_API_KEY: process.env.RESEND_API_KEY ? 'SET' : 'NOT SET',
+      RESEND_DNS_VERIFIED: process.env.RESEND_DNS_VERIFIED || 'NOT SET',
+      CONTACT_EMAIL: process.env.CONTACT_EMAIL || 'NOT SET',
+      NODE_ENV: process.env.NODE_ENV
+    })
+
     // Check if Resend API key is configured
-    if (!process.env.RESEND_API_KEY) {
-      console.error('Resend API key not configured')
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.error('Resend API key not configured in environment')
       return res.status(500).json({ 
         error: 'メール設定エラー: Resend APIキーが設定されていません。' 
       })
     }
+
+    // Initialize Resend client with API key
+    const resend = new Resend(apiKey)
 
     // 管理者への通知メール
     const adminEmailHtml = `
