@@ -19,6 +19,25 @@ type ContactResponse = {
 // Resendクライアントの初期化
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+// 送信元メールアドレスの設定
+// DNS認証前: 'onboarding@resend.dev'を使用
+// DNS認証後: 独自ドメインのアドレスを使用
+const getFromAddress = (type: 'admin' | 'customer') => {
+  const isDNSVerified = process.env.RESEND_DNS_VERIFIED === 'true'
+  
+  if (!isDNSVerified) {
+    // DNS認証前はResendのテストアドレスを使用
+    return 'Onboarding <onboarding@resend.dev>'
+  }
+  
+  // DNS認証後は独自ドメインのアドレスを使用
+  if (type === 'admin') {
+    return process.env.RESEND_FROM_ADMIN || 'お問い合わせフォーム <noreply@addvalueagent.com>'
+  } else {
+    return process.env.RESEND_FROM_CUSTOMER || 'アドバリューエージェント <info@addvalueagent.com>'
+  }
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ContactResponse>
@@ -136,7 +155,7 @@ export default async function handler(
     try {
       // 管理者への通知メール送信
       const adminEmail = await resend.emails.send({
-        from: 'お問い合わせフォーム <noreply@addvalueagent.com>',
+        from: getFromAddress('admin'),
         to: process.env.CONTACT_EMAIL || 'info@addvalueagent.com',
         subject: `【お問い合わせ】${name}様より`,
         html: adminEmailHtml,
@@ -147,7 +166,7 @@ export default async function handler(
 
       // 顧客への自動返信メール送信
       const customerEmail = await resend.emails.send({
-        from: 'アドバリューエージェント <info@addvalueagent.com>',
+        from: getFromAddress('customer'),
         to: email,
         subject: '【株式会社アドバリューエージェント】お問い合わせありがとうございます',
         html: customerEmailHtml
