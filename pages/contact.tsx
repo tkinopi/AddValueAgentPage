@@ -34,7 +34,7 @@ export default function ContactPage() {
     try {
       console.log("Submitting form data:", formData);
       
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/api/contact-resend', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

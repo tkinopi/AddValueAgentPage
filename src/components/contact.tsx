@@ -49,8 +49,8 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      // Use Next.js API route
-      const response = await fetch('/api/contact', {
+      // Use Resend API route (Gmail版を使う場合は /api/contact)
+      const response = await fetch('/api/contact-resend', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
