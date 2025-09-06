@@ -12,6 +12,9 @@ export default function Document() {
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="998c2b8eb1491fa7" />
+        
         {/* Open Graph */}
         <meta property="og:title" content="AddValue Agent - IT人材派遣・コンサルティング・システム開発" />
         <meta property="og:description" content="AddValue Agentは、IT人材派遣、技術コンサルティング、システム開発、Webサイト制作、ITエンジニア教育を提供する総合ITソリューション企業です。" />
