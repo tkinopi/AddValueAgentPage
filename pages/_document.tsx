@@ -19,8 +19,8 @@ export default function Document() {
         <meta property="og:title" content="AddValue Agent - IT人材派遣・コンサルティング・システム開発" />
         <meta property="og:description" content="AddValue Agentは、IT人材派遣、技術コンサルティング、システム開発、Webサイト制作、ITエンジニア教育を提供する総合ITソリューション企業です。" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://addvalue-agent.com/" />
-        <meta property="og:image" content="https://addvalue-agent.com/heroimageforaddvalue.png" />
+        <meta property="og:url" content="https://www.addvalueagent.com/" />
+        <meta property="og:image" content="https://www.addvalueagent.com/heroimageforaddvalue.png" />
         <meta property="og:site_name" content="AddValue Agent" />
         <meta property="og:locale" content="ja_JP" />
         
@@ -28,10 +28,10 @@ export default function Document() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="AddValue Agent - IT人材派遣・コンサルティング・システム開発" />
         <meta name="twitter:description" content="AddValue Agentは、IT人材派遣、技術コンサルティング、システム開発、Webサイト制作、ITエンジニア教育を提供する総合ITソリューション企業です。" />
-        <meta name="twitter:image" content="https://addvalue-agent.com/heroimageforaddvalue.png" />
+        <meta name="twitter:image" content="https://www.addvalueagent.com/heroimageforaddvalue.png" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href="https://addvalue-agent.com/" />
+        <link rel="canonical" href="https://www.addvalueagent.com/" />
         
         {/* FontAwesome CDN */}
         <link 
