@@ -4,6 +4,32 @@ export default function Document() {
   return (
     <Html lang="ja">
       <Head>
+        {/* SEO Meta Tags */}
+        <title>AddValue Agent - IT人材派遣・コンサルティング・システム開発</title>
+        <meta name="description" content="AddValue Agentは、IT人材派遣、技術コンサルティング、システム開発、Webサイト制作、ITエンジニア教育を提供する総合ITソリューション企業です。" />
+        <meta name="keywords" content="IT人材派遣,SES,コンサルティング,システム開発,Webサイト制作,ITエンジニア教育,東京,IT企業" />
+        <meta name="author" content="AddValue Agent" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="AddValue Agent - IT人材派遣・コンサルティング・システム開発" />
+        <meta property="og:description" content="AddValue Agentは、IT人材派遣、技術コンサルティング、システム開発、Webサイト制作、ITエンジニア教育を提供する総合ITソリューション企業です。" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://addvalue-agent.com/" />
+        <meta property="og:image" content="https://addvalue-agent.com/heroimageforaddvalue.png" />
+        <meta property="og:site_name" content="AddValue Agent" />
+        <meta property="og:locale" content="ja_JP" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AddValue Agent - IT人材派遣・コンサルティング・システム開発" />
+        <meta name="twitter:description" content="AddValue Agentは、IT人材派遣、技術コンサルティング、システム開発、Webサイト制作、ITエンジニア教育を提供する総合ITソリューション企業です。" />
+        <meta name="twitter:image" content="https://addvalue-agent.com/heroimageforaddvalue.png" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://addvalue-agent.com/" />
+        
         {/* FontAwesome CDN */}
         <link 
           rel="stylesheet" 
