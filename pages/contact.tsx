@@ -11,21 +11,29 @@ import { Loader2, Send } from "lucide-react";
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
+    furigana: "",
     email: "",
     company: "",
     phone: "",
     inquiry_type: "",
     message: ""
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // 基本的なクライアントサイドバリデーション
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim() || !formData.inquiry_type) {
+    if (!formData.name.trim() || !formData.furigana.trim() || !formData.email.trim() || !formData.message.trim() || !formData.inquiry_type) {
       alert("必須項目を入力してください。");
+      return;
+    }
+
+    // ふりがなのひらがなバリデーション
+    const hiraganaPattern = /^[ぁ-んー\s]+$/;
+    if (!hiraganaPattern.test(formData.furigana.trim())) {
+      alert("ふりがなはひらがなで入力してください。");
       return;
     }
 
@@ -58,6 +66,7 @@ export default function ContactPage() {
         // フォームをリセット
         setFormData({
           name: "",
+          furigana: "",
           email: "",
           company: "",
           phone: "",
@@ -110,6 +119,20 @@ export default function ContactPage() {
                       required
                       disabled={isSubmitting}
                       className="mt-1"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="furigana">ふりがな *</Label>
+                    <Input
+                      id="furigana"
+                      type="text"
+                      value={formData.furigana}
+                      onChange={(e) => handleChange("furigana", e.target.value)}
+                      required
+                      disabled={isSubmitting}
+                      className="mt-1"
+                      placeholder="ひらがなで入力してください"
                     />
                   </div>
 

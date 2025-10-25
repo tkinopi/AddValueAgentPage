@@ -15,6 +15,7 @@ export default function Contact() {
   
   const [formData, setFormData] = useState({
     name: "",
+    furigana: "",
     email: "",
     phone: "",
     message: ""
@@ -26,7 +27,7 @@ export default function Contact() {
     e.preventDefault();
     
     // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.furigana || !formData.email || !formData.message) {
       toast({
         title: "エラー",
         description: "必須項目を入力してください。",
@@ -34,7 +35,18 @@ export default function Contact() {
       });
       return;
     }
-    
+
+    // ふりがなのひらがなバリデーション
+    const hiraganaPattern = /^[ぁ-んー\s]+$/;
+    if (!hiraganaPattern.test(formData.furigana.trim())) {
+      toast({
+        title: "エラー",
+        description: "ふりがなはひらがなで入力してください。",
+        variant: "destructive"
+      });
+      return;
+    }
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
@@ -73,6 +85,7 @@ export default function Contact() {
       // Reset form
       setFormData({
         name: "",
+        furigana: "",
         email: "",
         phone: "",
         message: ""
@@ -186,7 +199,24 @@ export default function Contact() {
                     className="mt-2"
                   />
                 </div>
-                
+
+                <div>
+                  <Label htmlFor="furigana" className="text-japanese-dark font-medium">
+                    ふりがな *
+                  </Label>
+                  <Input
+                    id="furigana"
+                    name="furigana"
+                    type="text"
+                    required
+                    value={formData.furigana}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="mt-2"
+                    placeholder="ひらがなで入力してください"
+                  />
+                </div>
+
                 <div>
                   <Label htmlFor="email" className="text-japanese-dark font-medium">
                     メールアドレス *
