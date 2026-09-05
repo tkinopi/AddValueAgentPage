@@ -1,6 +1,6 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,6 +18,13 @@ export default function ContactPage() {
     inquiry_type: "",
     message: ""
   });
+
+  // honeypot: 画面上は見えない項目。人間は入力しないので、
+  // 値が入っていればボットによる送信と判断できる。
+  const [website, setWebsite] = useState("");
+
+  // フォーム表示時刻。送信までが速すぎる場合はボットとみなす。
+  const mountedAtRef = useRef(Date.now());
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -47,7 +54,11 @@ export default function ContactPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          website,
+          elapsed_ms: Date.now() - mountedAtRef.current
+        }),
       });
 
       console.log("Response status:", response.status);
@@ -73,6 +84,8 @@ export default function ContactPage() {
           inquiry_type: "",
           message: ""
         });
+        setWebsite("");
+        mountedAtRef.current = Date.now();
       } else {
         alert(result.message || "送信中にエラーが発生しました。");
       }
@@ -109,6 +122,33 @@ export default function ContactPage() {
               <div className="bg-white rounded-lg shadow-lg p-8">
                 <h2 className="text-2xl font-bold text-japanese-dark mb-6">お問い合わせフォーム</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/*
+                    honeypot。スクリーンリーダーとタブ移動から外し、
+                    画面外に飛ばして人間には触れないようにしている。
+                    display:none だと無視するボットがいるため位置で隠す。
+                  */}
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      left: "-9999px",
+                      width: "1px",
+                      height: "1px",
+                      overflow: "hidden"
+                    }}
+                  >
+                    <label htmlFor="website">Website</label>
+                    <input
+                      id="website"
+                      name="website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </div>
+
                   <div>
                     <Label htmlFor="name">お名前 *</Label>
                     <Input
