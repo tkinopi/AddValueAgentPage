@@ -1,13 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nodemailer from 'nodemailer'
+import {
+  ContactPayload,
+  detectSpam,
+  escapeHtml,
+  isAllowedOrigin,
+  resolveRequestOrigin
+} from '@/lib/contact-guard'
 
-type ContactRequest = {
-  name: string
-  email: string
-  phone?: string
-  company?: string
-  message: string
-}
+// 送信を受け付けた時にクライアントへ返す文言。
+// スパムと判定した送信にも同じ応答を返し、ボットに判定結果を悟らせない。
+const ACCEPTED_MESSAGE = 'お問い合わせを受け付けました。確認メールをお送りしましたのでご確認ください。'
 
 type ContactResponse = {
   success?: boolean
@@ -37,13 +40,27 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ContactResponse>
 ) {
-  // CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  // 自サイト以外からのリクエストは受け付けない。
+  // 以前は Access-Control-Allow-Origin: '*' だったため、
+  // フォーム画面を経由せずに API を直接叩けてしまっていた。
+  const requestOrigin = resolveRequestOrigin(
+    req.headers.origin,
+    req.headers.referer
+  )
+  const originAllowed = isAllowedOrigin(requestOrigin)
+
+  res.setHeader('Vary', 'Origin')
+  if (originAllowed && requestOrigin) {
+    res.setHeader('Access-Control-Allow-Origin', requestOrigin)
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  }
 
   // Handle preflight OPTIONS request
   if (req.method === 'OPTIONS') {
+    if (!originAllowed) {
+      return res.status(403).json({ error: 'Origin not allowed' })
+    }
     return res.status(200).json({ message: 'CORS preflight response' })
   }
 
@@ -52,8 +69,24 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed. Only POST is supported.' })
   }
 
+  if (!originAllowed) {
+    console.warn('Rejected contact request from disallowed origin:', requestOrigin)
+    return res.status(403).json({ error: 'Origin not allowed' })
+  }
+
   try {
-    const { name, email, phone, company, message } = req.body as ContactRequest
+    const payload = (req.body ?? {}) as ContactPayload
+    const { name, furigana, email, phone, company, message } = payload
+
+    // ボット判定。該当した場合はメールを送らずに正常応答を返す。
+    const verdict = detectSpam(payload)
+    if (verdict.spam) {
+      console.warn('Blocked spam contact submission:', {
+        reason: verdict.reason,
+        timestamp: new Date().toISOString()
+      })
+      return res.status(200).json({ success: true, message: ACCEPTED_MESSAGE })
+    }
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -85,33 +118,50 @@ export default async function handler(
       })
     }
 
+    // メール本文に埋め込む値は必ずエスケープする（HTMLインジェクション対策）
+    const safe = {
+      name: escapeHtml(name),
+      furigana: escapeHtml(furigana),
+      email: escapeHtml(email),
+      phone: escapeHtml(phone) || '未入力',
+      company: escapeHtml(company) || '未入力',
+      message: escapeHtml(message)
+    }
+
+    // 件名に改行を持ち込ませない
+    const subjectName = name.replace(/[\r\n]+/g, ' ').trim()
+
     // Create email content
     const mailOptions = {
       from: process.env.GMAIL_USER,
       to: process.env.CONTACT_EMAIL || process.env.GMAIL_USER,
-      subject: `【お問い合わせ】${name}様より`,
+      subject: `【お問い合わせ】${subjectName}様より`,
       html: `
         <h2>新しいお問い合わせが届きました</h2>
         <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
           <tr>
             <td style="padding: 10px; border: 1px solid #ddd; background-color: #f5f5f5; font-weight: bold;">お名前</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">${name}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">${safe.name}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ddd; background-color: #f5f5f5; font-weight: bold;">ふりがな</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">${safe.furigana}</td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #ddd; background-color: #f5f5f5; font-weight: bold;">メールアドレス</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">${email}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">${safe.email}</td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #ddd; background-color: #f5f5f5; font-weight: bold;">電話番号</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">${phone || '未入力'}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">${safe.phone}</td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #ddd; background-color: #f5f5f5; font-weight: bold;">会社名</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">${company || '未入力'}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">${safe.company}</td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #ddd; background-color: #f5f5f5; font-weight: bold;">お問い合わせ内容</td>
-            <td style="padding: 10px; border: 1px solid #ddd; white-space: pre-wrap;">${message}</td>
+            <td style="padding: 10px; border: 1px solid #ddd; white-space: pre-wrap;">${safe.message}</td>
           </tr>
         </table>
         <p style="margin-top: 20px; color: #666;">
@@ -128,19 +178,19 @@ export default async function handler(
       subject: '【株式会社アドバリューエージェント】お問い合わせありがとうございます',
       html: `
         <div style="font-family: 'Noto Sans JP', sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #1a365d;">${name} 様</h2>
+          <h2 style="color: #1a365d;">${safe.name} 様</h2>
           
           <p>この度は、株式会社アドバリューエージェントへお問い合わせいただき、誠にありがとうございます。</p>
           
           <p>以下の内容でお問い合わせを承りました。</p>
           
           <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
-            <p><strong>お名前:</strong> ${name}</p>
-            <p><strong>メールアドレス:</strong> ${email}</p>
-            <p><strong>電話番号:</strong> ${phone || '未入力'}</p>
-            <p><strong>会社名:</strong> ${company || '未入力'}</p>
+            <p><strong>お名前:</strong> ${safe.name}</p>
+            <p><strong>メールアドレス:</strong> ${safe.email}</p>
+            <p><strong>電話番号:</strong> ${safe.phone}</p>
+            <p><strong>会社名:</strong> ${safe.company}</p>
             <p><strong>お問い合わせ内容:</strong></p>
-            <p style="white-space: pre-wrap; background-color: white; padding: 10px; border-radius: 3px;">${message}</p>
+            <p style="white-space: pre-wrap; background-color: white; padding: 10px; border-radius: 3px;">${safe.message}</p>
           </div>
           
           <p>担当者より3営業日以内にご連絡させていただきます。</p>
