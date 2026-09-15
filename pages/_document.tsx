@@ -58,7 +58,7 @@ export default function Document() {
               },
               "contactPoint": {
                 "@type": "ContactPoint",
-                "email": "info@addvalue-agent.co.jp",
+                "email": "info@addvalueagent.com",
                 "contactType": "customer service",
                 "availableLanguage": "Japanese"
               },
