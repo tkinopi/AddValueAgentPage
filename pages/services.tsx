@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Seo from "@/components/seo";
 
 export default function ServicesPage() {
   const services = [
@@ -80,6 +81,7 @@ export default function ServicesPage() {
 
   return (
     <>
+      <Seo title="事業内容" description="アドバリューエージェントの事業内容。人材紹介事業、採用コンサルティング、SES事業、Webコンサルティング、教育支援の5つのサービスをご紹介します。" path="/services/" />
       <Navigation />
       <main className="pt-20 min-h-screen bg-gray-50">
         {/* Header Section */}

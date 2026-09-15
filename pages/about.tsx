@@ -1,9 +1,11 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import Seo from "@/components/seo";
 
 export default function AboutPage() {
   return (
     <>
+      <Seo title="会社概要" description="株式会社アドバリューエージェント（Add Value Agent）の会社概要。神戸市西区を拠点に、人材紹介・採用コンサルティング・SES・Webコンサルティング・教育支援を展開しています。" path="/about/" />
       <Navigation />
       <main className="pt-20 min-h-screen">
         <div className="container mx-auto px-4 py-12">

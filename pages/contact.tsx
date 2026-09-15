@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, Send } from "lucide-react";
+import Seo from "@/components/seo";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -111,6 +112,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <Seo title="お問い合わせ" description="株式会社アドバリューエージェントへのお問い合わせはこちら。人材紹介、採用コンサルティング、SES、Webコンサルティング、教育支援に関するご相談を受け付けています。" path="/contact/" />
       <Navigation />
       <main className="pt-20 min-h-screen">
         <div className="container mx-auto px-4 py-12">
