@@ -3,10 +3,12 @@ import Footer from "@/components/footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Seo from "@/components/seo";
 
 export default function RecruitPage() {
   return (
     <>
+      <Seo title="人材紹介事業" description="企業様のニーズに合った優秀な人材をご紹介いたします。IT業界を中心に、様々な分野での人材マッチングを行っており、求職者と企業を繋ぐ架け橋として機能します。" path="/services/recruit/" />
       <Navigation />
       <main className="pt-20 min-h-screen">
         {/* Hero Section */}

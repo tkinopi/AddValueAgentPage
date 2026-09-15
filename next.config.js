@@ -3,6 +3,17 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   output: 'standalone',
+  // wwwなしドメインへのアクセスは www 付きへ301で寄せる(重複コンテンツ対策)
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'addvalueagent.com' }],
+        destination: 'https://www.addvalueagent.com/:path*/',
+        statusCode: 301
+      }
+    ]
+  },
   images: {
     unoptimized: true
   },

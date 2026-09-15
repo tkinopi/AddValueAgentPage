@@ -3,10 +3,12 @@ import Footer from "@/components/footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Seo from "@/components/seo";
 
 export default function SesPage() {
   return (
     <>
+      <Seo title="SES事業" description="システムエンジニアリングサービスとして、お客様のプロジェクトに最適な技術者を紹介いたします。短期から長期まで、柔軟な契約形態に対応しております。" path="/services/ses/" />
       <Navigation />
       <main className="pt-20 min-h-screen">
         {/* Hero Section */}

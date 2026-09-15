@@ -3,10 +3,12 @@ import Footer from "@/components/footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Seo from "@/components/seo";
 
 export default function ConsultingPage() {
   return (
     <>
+      <Seo title="採用コンサルティング" description="企業様の採用課題を解決するため、戦略的な採用支援を行います。採用プロセスの最適化から面接官研修まで、トータルサポートいたします。" path="/services/consulting/" />
       <Navigation />
       <main className="pt-20 min-h-screen">
         {/* Hero Section */}
