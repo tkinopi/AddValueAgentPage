@@ -3,10 +3,12 @@ import Footer from "@/components/footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Seo from "@/components/seo";
 
 export default function WebPage() {
   return (
     <>
+      <Seo title="Webコンサルティング" description="企業様のWebサイトやWebマーケティングに関する課題解決をサポートいたします。戦略立案から実装まで一貫してお手伝いします。" path="/services/web/" />
       <Navigation />
       <main className="pt-20 min-h-screen">
         {/* Hero Section */}

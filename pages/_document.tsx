@@ -4,34 +4,22 @@ export default function Document() {
   return (
     <Html lang="ja">
       <Head>
-        {/* SEO Meta Tags */}
-        <title>Add Value Agent（アドバリューエージェント）| 採用で価値を創る人材ソリューション企業</title>
-        <meta name="description" content="株式会社アドバリューエージェントは神戸を拠点に、人材紹介、採用コンサルティング、SES事業、Webコンサルティング、教育支援を提供。若年層キャリア支援と医療福祉分野の転職支援に特化した総合人材ソリューション企業です。" />
+        {/* サイト共通のメタタグ(title/description/canonical等のページ固有タグは src/components/seo.tsx) */}
         <meta name="keywords" content="人材紹介,採用コンサルティング,SES事業,転職支援,若年層キャリア支援,医療福祉転職,神戸,兵庫県,アドバリューエージェント,Add Value Agent" />
         <meta name="author" content="AddValue Agent" />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="998c2b8eb1491fa7" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Add Value Agent | 採用で価値を創る人材ソリューション企業" />
-        <meta property="og:description" content="株式会社アドバリューエージェントは、人材紹介、採用コンサルティング、SES事業、Webコンサルティング、教育支援を提供。若年層キャリア支援と医療福祉分野の転職支援に特化。" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.addvalueagent.com/" />
         <meta property="og:image" content="https://www.addvalueagent.com/heroimageforaddvalue.png" />
         <meta property="og:site_name" content="AddValue Agent" />
         <meta property="og:locale" content="ja_JP" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Add Value Agent | 採用で価値を創る人材ソリューション企業" />
-        <meta name="twitter:description" content="人材紹介、採用コンサルティング、SES事業、Webコンサルティング、教育支援を提供。若年層キャリア支援と医療福祉分野の転職支援に特化。" />
         <meta name="twitter:image" content="https://www.addvalueagent.com/heroimageforaddvalue.png" />
-        
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://www.addvalueagent.com/" />
         
         {/* FontAwesome CDN */}
         <link 

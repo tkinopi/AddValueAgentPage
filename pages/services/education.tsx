@@ -3,10 +3,12 @@ import Footer from "@/components/footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Seo from "@/components/seo";
 
 export default function EducationPage() {
   return (
     <>
+      <Seo title="教育支援" description="IT技術者のスキルアップや新人研修など、人材育成に関する支援を行っております。実践的なカリキュラムで即戦力となる人材を育成します。" path="/services/education/" />
       <Navigation />
       <main className="pt-20 min-h-screen">
         {/* Hero Section */}
