@@ -4,7 +4,7 @@
   "description": "Lambda function for handling contact form submissions",
   "main": "index.js",
   "dependencies": {
-    "nodemailer": "^6.9.7"
+    "nodemailer": "^10.1.7"
   },
   "scripts": {
     "build": "zip -r function.zip index.js node_modules package.json"
